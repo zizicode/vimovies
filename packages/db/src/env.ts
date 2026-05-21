@@ -1,7 +1,11 @@
 // env.ts
 import { config } from 'dotenv'
 import { z } from 'zod'
-import { resolve } from 'path'
+import { resolve, dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 // Load .env from multiple possible locations
 const possiblePaths = [
