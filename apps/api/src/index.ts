@@ -3,7 +3,6 @@ import { serve } from '@hono/node-server'
 import { app } from './app.js'
 import { env } from '@vimovies/db'
 import { initializeSocket } from './socket/index.js'
-import { initSupabase } from '@vimovies/db'
 // import { SyncMoviesJob } from './job/sync-movies.job.js'
 
 const port = env.PORT

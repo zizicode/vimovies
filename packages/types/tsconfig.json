@@ -7,8 +7,7 @@
     "outDir": "dist",
     "rootDir": "src",
     "noEmit": false,
-    "declaration": true,
-    "ignoreDeprecations": "6.0"
+    "declaration": true
   },
   "include": ["src"]
 }
