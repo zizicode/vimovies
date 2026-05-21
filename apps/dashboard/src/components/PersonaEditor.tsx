@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { TiArrowBack } from 'react-icons/ti';
 import type { PersonItem } from '../store/people.store';
 import { usePeopleStore } from '../store/people.store';
-import { useAuthStore } from '../store/token.store';
 import './ArticuloEditor.scss';
 
 interface PersonaEditorProps {
