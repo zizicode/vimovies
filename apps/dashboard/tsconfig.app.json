@@ -24,6 +24,9 @@
       "@vimovies/db": ["../../packages/db/src/index.ts"]
     },
 
+    /* Ignore deprecation warnings */
+    "ignoreDeprecations": "6.0",
+
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
