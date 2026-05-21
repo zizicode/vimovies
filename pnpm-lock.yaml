@@ -50,9 +50,6 @@ importers:
       '@vimovies/utils':
         specifier: workspace:*
         version: link:../../packages/utils
-      '@vimovies/validators':
-        specifier: workspace:*
-        version: link:../../packages/validators
       axios:
         specifier: ^1.16.1
         version: 1.16.1
