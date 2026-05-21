@@ -82,7 +82,7 @@ export const PlatformsController = {
     try {
       const { mediaId }  = c.req.param()
       const { providers } = await c.req.json()
-      await PlatformsService.syncWatchProviders(mediaId, providers)
+      await PlatformsService.syncWatchProviders(mediaId!, providers)
       return ok(c, { message: 'Providers sincronizados' })
     } catch (err) {
       return serverError(c, err)
@@ -94,7 +94,7 @@ export const PlatformsController = {
     try {
       const { id }          = c.req.param()
       const { affiliate_url } = await c.req.json()
-      const result          = await PlatformsService.updateAffiliateUrl(id, affiliate_url)
+      const result          = await PlatformsService.updateAffiliateUrl(id!, affiliate_url)
       return ok(c, result)
     } catch (err) {
       return serverError(c, err)

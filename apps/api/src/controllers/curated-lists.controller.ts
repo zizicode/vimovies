@@ -72,6 +72,7 @@ export const CuratedListsController = {
   async syncItems(c: Context) {
     try {
       const { id }    = c.req.param()
+      if (!id) return notFound(c, 'Lista')
       const { items } = await c.req.json()
       await CuratedListsService.syncItems(id, items)
       return ok(c, { message: 'Items sincronizados' })
