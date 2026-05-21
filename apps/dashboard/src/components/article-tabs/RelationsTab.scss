@@ -1,0 +1,91 @@
+.article-relations-tab {
+  .tab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+
+    h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text1);
+    }
+
+    .edit-actions {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  .relations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .relation-card {
+    padding: 24px;
+    background: var(--bg2);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+
+    h4 {
+      margin: 0 0 16px 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg1);
+      color: var(--text1);
+      font-size: 14px;
+      transition: all 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+      }
+    }
+
+    .relation-display {
+      .author-info, .category-info {
+        .author-name, .category-name {
+          font-size: 16px;
+          font-weight: 600;
+          color: var(--text1);
+          margin-bottom: 4px;
+        }
+
+        .author-slug, .category-desc {
+          font-size: 13px;
+          color: var(--text3);
+        }
+
+        .author-expertise {
+          font-size: 13px;
+          color: var(--text2);
+          margin-top: 8px;
+          padding: 8px;
+          background: var(--bg1);
+          border-radius: 4px;
+        }
+      }
+
+      .no-value {
+        color: var(--text3);
+        font-style: italic;
+      }
+    }
+  }
+}

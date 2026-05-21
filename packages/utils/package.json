@@ -1,0 +1,22 @@
+{
+  "name": "@vimovies/utils",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./src/env": "./src/env.ts",
+    "./src/auth.utils": "./src/auth.utils.ts"
+  },
+  "dependencies": {
+    "@vimovies/types": "workspace:*",
+    "axios": "^1.16.1",
+    "dotenv": "^17.4.2",
+    "hono": "^4.12.18",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.41",
+    "@vimovies/tsconfig": "workspace:*",
+    "typescript": "^5.9.3"
+  }
+}

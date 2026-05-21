@@ -1,0 +1,281 @@
+// ============================================================
+// _variables.scss — Vimovies Design Tokens
+// ============================================================
+// Centraliza TODOS los valores del sistema de diseño.
+// Cambia aquí y se propaga a todo el proyecto automáticamente.
+// ============================================================
+
+
+// ── TIPOGRAFÍA ───────────────────────────────────────────────
+// Familias
+$font-display : 'Syne', sans-serif;
+$font-body    : 'DM Sans', sans-serif;
+
+// Tamaños base
+$font-size-base : 14px;
+
+// Escala tipográfica
+$font-size-xxs  : 10px;
+$font-size-xs   : 11px;
+$font-size-sm   : 12px;
+$font-size-md   : 13px;
+$font-size-body : 13.5px;
+$font-size-base : 14px;
+$font-size-lg   : 15px;
+$font-size-xl   : 17px;
+$font-size-2xl  : 18px;
+$font-size-3xl  : 20px;
+$font-size-4xl  : 22px;
+$font-size-5xl  : 24px;
+$font-size-6xl  : 26px;
+
+// Pesos
+$font-weight-light   : 300;
+$font-weight-regular : 400;
+$font-weight-medium  : 500;
+$font-weight-semibold: 600;
+$font-weight-bold    : 700;
+$font-weight-extrabold: 800;
+
+// Letter spacing
+$letter-spacing-tight : -0.5px;
+$letter-spacing-snug  : -0.3px;
+$letter-spacing-normal: 0;
+$letter-spacing-wide  : 0.05em;
+$letter-spacing-wider : 0.06em;
+$letter-spacing-widest: 0.08em;
+
+// Line heights
+$line-height-tight  : 1.3;
+$line-height-normal : 1.5;
+
+
+// ── COLORES — BACKGROUNDS ────────────────────────────────────
+// De más oscuro a más claro (escala de profundidad)
+$bg-base    : #0a0a0b;   // bg  — fondo raíz / topbar
+$bg-surface : #111113;   // bg2 — sidebar, cards, panels
+$bg-raised  : #18181c;   // bg3 — hover states, inputs
+$bg-overlay : #1f1f24;   // bg4 — elementos elevados, kbd
+
+
+// ── COLORES — BORDES ─────────────────────────────────────────
+$border-subtle : rgba(255, 255, 255, 0.07);  // --border  → separadores suaves
+$border-default: rgba(255, 255, 255, 0.12);  // --border2 → bordes visibles, inputs
+
+
+// ── COLORES — TEXTO ──────────────────────────────────────────
+$text-primary  : #f0efeb;  // --text  → texto principal
+$text-secondary: #9b9a96;  // --text2 → texto secundario, placeholders
+$text-muted    : #5c5b57;  // --text3 → texto muy tenue, labels, hints
+
+
+// ── COLORES — MARCA (Gold / Accent) ──────────────────────────
+$gold          : #e8a030;                    // primary accent
+$gold-dim      : #b07820;                    // variante oscura
+$gold-hover    : #f0aa38;                    // estado hover de botones gold
+$gold-bg       : rgba(232, 160, 48, 0.08);  // fondo tenue gold
+$gold-bg-hover : rgba(232, 160, 48, 0.15);  // fondo gold más intenso (badges, mini bars)
+$gold-border   : rgba(232, 160, 48, 0.20);  // borde gold (nav active)
+$gold-border-pg: rgba(232, 160, 48, 0.30);  // borde gold (pagination active)
+
+
+// ── COLORES — SEMÁNTICOS ─────────────────────────────────────
+// Success / Verde
+$green         : #22c55e;
+$green-bg      : rgba(34, 197, 94, 0.10);
+
+// Danger / Rojo
+$red           : #ef4444;
+$red-bg        : rgba(239, 68, 68, 0.10);
+$red-border    : rgba(239, 68, 68, 0.20);
+
+// Info / Azul
+$blue          : #60a5fa;
+$blue-bg       : rgba(96, 165, 250, 0.10);
+
+
+// ── COLORES — LOGO MARK ──────────────────────────────────────
+$logo-mark-bg   : $gold;        // fondo del ícono en sidebar y login
+$logo-mark-icon : $bg-base;     // color del ícono dentro del logo-mark
+
+
+// ── COLORES — AVATAR ─────────────────────────────────────────
+$avatar-gradient-from : $gold-dim;
+$avatar-gradient-to   : $gold;
+$avatar-text-color    : $bg-base;
+
+
+// ── BORDER RADIUS ────────────────────────────────────────────
+$radius-xs : 3px;   // kbd, scrollbar
+$radius-sm : 4px;   // poster-thumb
+$radius-md : 6px;   // --radius-sm → botones, inputs, nav items
+$radius-lg : 8px;   // logo-mark
+$radius-xl : 10px;  // --radius → cards, stat cards, panels
+$radius-2xl: 16px;  // login-card
+$radius-full: 20px; // badges, pills, nav-badge (pill shapes)
+
+
+// ── ESPACIADO ────────────────────────────────────────────────
+// Padding base del layout
+$space-1 : 2px;
+$space-2 : 4px;
+$space-3 : 6px;
+$space-4 : 8px;
+$space-5 : 10px;
+$space-6 : 12px;
+$space-7 : 14px;
+$space-8 : 16px;
+$space-9 : 18px;
+$space-10: 20px;
+$space-12: 24px;
+$space-14: 28px;
+$space-16: 32px;
+$space-18: 36px;
+
+
+// ── LAYOUT ───────────────────────────────────────────────────
+$sidebar-width  : 220px;
+$topbar-height  : 56px;
+$view-padding   : 24px;
+
+
+// ── DIMENSIONES — COMPONENTES ────────────────────────────────
+// Sidebar
+$sidebar-logo-padding-y   : 20px;
+$sidebar-logo-padding-x   : 20px;
+$sidebar-nav-padding      : 12px 10px;
+$sidebar-nav-gap          : 2px;
+$sidebar-section-label-mt : 8px;
+
+// Logo mark
+$logo-mark-size : 32px;
+$logo-mark-size-lg: 40px;  // versión login
+
+// Avatar
+$avatar-size-sm : 30px;    // sidebar footer
+$avatar-size-md : 34px;    // stat-icon container (cuadrado, no circular)
+$avatar-size-lg : 64px;    // cast-photo
+
+// Topbar
+$topbar-btn-size : 34px;
+
+// Botones
+$btn-padding-y   : 7px;
+$btn-padding-x   : 14px;
+$btn-gap         : 7px;
+$btn-icon-size   : 16px;
+
+// Inputs (inline-edit / form-input)
+$input-padding-y : 8px;
+$input-padding-x : 12px;
+
+// Barra de búsqueda
+$search-bar-width  : 220px;
+$search-bar-gap    : 8px;
+
+// Cards
+$card-header-padding : 14px 18px;
+$card-body-padding   : 18px;
+
+// Tabla
+$table-th-padding : 10px 14px;
+$table-td-padding : 11px 14px;
+
+// Badges
+$badge-padding-y : 2px;
+$badge-padding-x : 8px;
+$badge-icon-size : 10px;
+
+// Poster
+$poster-thumb-w : 32px;
+$poster-thumb-h : 46px;
+$poster-lg-w    : 160px;
+$poster-lg-h    : 240px;
+
+// Cast photo
+$cast-photo-size  : 64px;
+$cast-item-width  : 64px;
+
+// Score bar
+$score-bar-height : 4px;
+
+// Mini chart
+$mini-chart-height : 48px;
+$mini-chart-gap    : 4px;
+
+// Progress track
+$progress-track-height : 4px;
+$progress-track-width  : 80px;
+
+// Sync spinner
+$sync-spinner-size    : 36px;
+$sync-spinner-border  : 2px;
+
+// Pagination
+$page-btn-size : 30px;
+
+// Login card
+$login-card-width : 380px;
+
+// SEO score ring
+$seo-ring-size : 80px;
+
+// Tooltip
+$tooltip-z-index : 99;
+$tooltip-offset  : 6px;
+
+// Film strip dot
+$film-dot-size : 6px;
+
+// Feed dot
+$feed-dot-size : 8px;
+
+// Platform dot
+$platform-dot-size : 7px;
+
+// Scrollbar
+$scrollbar-size : 5px;
+
+// Stat card top accent bar
+$stat-accent-bar-height : 2px;
+
+
+// ── TRANSICIONES ─────────────────────────────────────────────
+$transition-speed-fast    : 0.1s;
+$transition-speed-default : 0.12s;
+$transition-speed-medium  : 0.15s;
+$transition-speed-slow    : 0.2s;
+
+$transition-easing-default : ease;
+$transition-easing-linear  : linear;
+
+// Composiciones listas para usar
+$transition-default : all $transition-speed-default $transition-easing-default;
+$transition-bg      : background $transition-speed-fast $transition-easing-default;
+$transition-border  : border-color $transition-speed-default $transition-easing-default;
+$transition-color   : color $transition-speed-fast $transition-easing-default;
+$transition-sidebar : width $transition-speed-slow $transition-easing-default;
+$transition-opacity : opacity $transition-speed-medium $transition-easing-default;
+
+
+// ── ANIMACIONES ──────────────────────────────────────────────
+$animation-fadein-duration  : 0.15s;
+$animation-spin-duration    : 0.8s;
+$animation-pulse-duration   : 2s;
+
+// ── OVERLAYS / Z-INDEX ────────────────────────────────────────
+$z-tooltip  : 99;
+$z-modal    : 100;   // login-view overlay usa z-index 100
+
+
+// ── GRIDS ────────────────────────────────────────────────────
+$grid-stats-cols    : repeat(4, 1fr);
+$grid-two-col       : 1fr 1fr;
+$grid-three-col     : 2fr 1fr;           // .three-col (detalle + aside)
+$grid-meta          : 1fr 1fr;
+$grid-seo-overview  : repeat(3, 1fr);
+$grid-movie-detail  : 160px 1fr;
+$grid-gap-sm        : 12px;
+$grid-gap-md        : 16px;
+$grid-gap-lg        : 20px;
+$grid-gap-section   : 24px;

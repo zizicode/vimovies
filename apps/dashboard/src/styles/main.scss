@@ -1,0 +1,1585 @@
+// ============================================================
+// main.scss — Vimovies Component Styles
+// ============================================================
+// Importa variables y define todos los estilos del proyecto
+// organizados por componente/sección.
+// ============================================================
+
+@use 'fonts' as *;
+@use 'variables' as *;   // ajusta la ruta según tu estructura
+
+
+// ── RESET & BASE ─────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Screen reader only - para accesibilidad
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+  background  : $bg-base;
+  color       : $text-primary;
+  font-family : $font-body;
+  font-size   : $font-size-base;
+  overflow    : hidden;
+}
+
+
+// ============================================================
+// COLORES DE FONDO (Background utilities)
+// ============================================================
+
+.bg-base    { background: $bg-base; }
+.bg-surface { background: $bg-surface; }
+.bg-raised  { background: $bg-raised; }
+.bg-overlay { background: $bg-overlay; }
+
+// Fondos semánticos de color
+.bg-gold  { background: $gold-bg; }
+.bg-green { background: $green-bg; }
+.bg-blue  { background: $blue-bg; }
+.bg-red   { background: $red-bg; }
+
+
+// ============================================================
+// TIPOGRAFÍA (Text utilities)
+// ============================================================
+
+.text-primary   { color: $text-primary; }
+.text-secondary { color: $text-secondary; }
+.text-muted     { color: $text-muted; }
+.text-gold      { color: $gold; }
+.text-green     { color: $green; }
+.text-red       { color: $red; }
+.text-blue      { color: $blue; }
+
+.font-display { font-family: $font-display; }
+.font-body    { font-family: $font-body; }
+
+
+// ============================================================
+// LAYOUT PRINCIPAL
+// ============================================================
+
+.app {
+  display : flex;
+  height  : 100vh;
+}
+
+// Content wrapper
+.content {
+  flex       : 1;
+  overflow-y : auto;
+  overflow-x : hidden;
+}
+
+// View sections (tabs de contenido principal)
+.view {
+  display   : none;
+  padding   : $view-padding;
+  animation : fadeIn $animation-fadein-duration $transition-easing-default;
+
+  &.active {
+    display: block;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity   : 0;
+    transform : translateY(4px);
+  }
+  to {
+    opacity   : 1;
+    transform : none;
+  }
+}
+
+// Grids de layout reutilizables
+.two-col {
+  display               : grid;
+  grid-template-columns : $grid-two-col;
+  gap                   : $grid-gap-md;
+  margin-bottom         : $grid-gap-md;
+}
+
+.three-col {
+  display               : grid;
+  grid-template-columns : $grid-three-col;
+  gap                   : $grid-gap-md;
+  margin-bottom         : $grid-gap-md;
+}
+
+
+// ============================================================
+// SIDEBAR
+// ============================================================
+
+.sidebar {
+  width        : $sidebar-width;
+  flex-shrink  : 0;
+  background   : $bg-surface;
+  border-right : 1px solid $border-subtle;
+  display      : flex;
+  flex-direction: column;
+  padding      : 0;
+  transition   : $transition-sidebar;
+}
+
+// Logo
+.sidebar-logo {
+  padding        : $sidebar-logo-padding-y $sidebar-logo-padding-x 16px;
+  display        : flex;
+  align-items    : center;
+  gap            : $space-5;
+  border-bottom  : 1px solid $border-subtle;
+}
+
+.logo-mark {
+  width            : $logo-mark-size;
+  height           : $logo-mark-size;
+  background       : $logo-mark-bg;
+  border-radius    : $radius-lg;
+  display          : flex;
+  align-items      : center;
+  justify-content  : center;
+  flex-shrink      : 0;
+
+  img {
+    width: $font-size-3xl;
+    color     : $logo-mark-icon;
+    font-size : $font-size-xl;
+  }
+}
+
+.logo-text {
+  font-family    : $font-display;
+  font-size      : $font-size-md;
+  font-weight    : $font-weight-bold;
+  letter-spacing : $letter-spacing-snug;
+  color          : $text-primary;
+
+  span { color: $gold; }
+}
+
+// Navegación
+.sidebar-nav {
+  padding        : $sidebar-nav-padding;
+  flex           : 1;
+  display        : flex;
+  flex-direction : column;
+  gap            : $sidebar-nav-gap;
+}
+
+.nav-section-label {
+  font-size      : $font-size-xxs;
+  font-weight    : $font-weight-medium;
+  letter-spacing : $letter-spacing-widest;
+  color          : $text-muted;
+  text-transform : uppercase;
+  padding        : $space-5 $space-5 $space-3;
+  margin-top     : $space-4;
+}
+
+.nav-item {
+  display      : flex;
+  align-items  : center;
+  gap          : $space-5 - 1;
+  padding      : $space-4 $space-5;
+  border-radius: $radius-md;
+  cursor       : pointer;
+  color        : $text-secondary;
+  font-size    : $font-size-body;
+  font-weight  : $font-weight-regular;
+  transition   : $transition-default;
+  border       : 1px solid transparent;
+  position     : relative;
+
+  i {
+    font-size  : $font-size-xl;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background : $bg-raised;
+    color      : $text-primary;
+  }
+
+  &.active {
+    background   : $gold-bg;
+    color        : $gold;
+    border-color : $gold-border;
+    font-weight  : $font-weight-medium;
+  }
+}
+
+.nav-badge {
+  margin-left   : auto;
+  background    : $gold-bg-hover;
+  color         : $gold;
+  font-size     : $font-size-xxs;
+  font-weight   : $font-weight-semibold;
+  padding       : $space-1 $space-3 + 1;
+  border-radius : $radius-full;
+}
+
+// Footer del sidebar
+.sidebar-footer {
+  padding      : $space-6 $space-5;
+  border-top   : 1px solid $border-subtle;
+}
+
+.user-row {
+  display      : flex;
+  align-items  : center;
+  gap          : $space-5 - 1;
+  padding      : $space-4 $space-5;
+  border-radius: $radius-md;
+  cursor       : pointer;
+  transition   : $transition-bg;
+
+  &:hover { background: $bg-raised; }
+}
+
+.user-info  { flex: 1; min-width: 0; }
+.user-name  { font-size: $font-size-md; font-weight: $font-weight-medium; color: $text-primary; }
+.user-role  { font-size: $font-size-xs; color: $text-muted; }
+
+
+// ============================================================
+// NAVBAR / TOPBAR
+// ============================================================
+
+.main {
+  flex           : 1;
+  display        : flex;
+  flex-direction : column;
+  min-width      : 0;
+  overflow       : hidden;
+  padding: 0;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.topbar {
+  position     : relative;
+  z-index      : 10;
+  height       : $topbar-height;
+  background   : $bg-base;
+  border-bottom: 1px solid $border-subtle;
+  display      : flex;
+  align-items  : center;
+  padding      : 0 $space-12;
+  gap          : $space-8;
+  flex-shrink  : 0;
+}
+
+.topbar-title {
+  font-family : $font-display;
+  font-size   : $font-size-lg;
+  font-weight : $font-weight-semibold;
+  color       : $text-primary;
+}
+
+.topbar-breadcrumb {
+  font-size  : $font-size-md;
+  color      : $text-muted;
+  display    : flex;
+  align-items: center;
+  gap        : $space-3;
+
+  span { color: $text-secondary; }
+}
+
+.topbar-spacer { flex: 1; }
+
+.topbar-btn {
+  width        : $topbar-btn-size;
+  height       : $topbar-btn-size;
+  border-radius: $radius-md;
+  background   : $bg-raised;
+  border       : 1px solid $border-subtle;
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  cursor       : pointer;
+  color        : $text-secondary;
+  transition   : $transition-default;
+
+  i { font-size: $font-size-xl; }
+
+  &:hover {
+    background : $bg-overlay;
+    color      : $text-primary;
+  }
+}
+
+
+// ============================================================
+// SECCIÓN HEADER (títulos de páginas)
+// ============================================================
+
+.section-header {
+  display        : flex;
+  align-items    : flex-start;
+  justify-content: space-between;
+  margin-bottom  : $space-10;
+}
+
+.section-title {
+  font-family    : $font-display;
+  font-size      : $font-size-3xl;
+  font-weight    : $font-weight-bold;
+  color          : $text-primary;
+  letter-spacing : $letter-spacing-snug;
+}
+
+.section-sub {
+  font-size    : $font-size-md;
+  color        : $text-muted;
+  margin-top   : $space-1 + 1;
+}
+
+
+// ============================================================
+// BOTONES
+// ============================================================
+
+.btn {
+  display      : inline-flex;
+  align-items  : center;
+  gap          : $btn-gap;
+  padding      : $btn-padding-y $btn-padding-x;
+  border-radius: $radius-md;
+  font-family  : $font-body;
+  font-size    : $font-size-md;
+  font-weight  : $font-weight-medium;
+  cursor       : pointer;
+  border       : 1px solid transparent;
+  transition   : $transition-default;
+
+  i { font-size: $btn-icon-size; }
+}
+
+// Variantes
+.btn-primary {
+  background   : $gold;
+  color        : $bg-base;
+  border-color : $gold;
+
+  &:hover { background: $gold-hover; }
+}
+
+.btn-ghost {
+  background   : transparent;
+  color        : $text-secondary;
+  border-color : $border-default;
+
+  &:hover {
+    background : $bg-raised;
+    color      : $text-primary;
+  }
+}
+
+.btn-danger {
+  background   : $red-bg;
+  color        : $red;
+  border-color : $red-border;
+}
+
+// Botón full-width para login
+.login-btn {
+  width        : 100%;
+  background   : $gold;
+  color        : $bg-base;
+  border       : none;
+  border-radius: $radius-md;
+  padding      : 11px;
+  font-family  : $font-display;
+  font-size    : $font-size-base;
+  font-weight  : $font-weight-bold;
+  cursor       : pointer;
+  margin-top   : $space-4;
+  letter-spacing: 0.3px;
+  transition   : $transition-bg;
+
+  &:hover { background: $gold-hover; }
+}
+
+
+// ============================================================
+// INPUTS & FORMULARIOS
+// ============================================================
+
+// Input genérico (inline edit, textarea)
+.inline-edit {
+  background   : $bg-raised;
+  border       : 1px solid $border-default;
+  border-radius: $radius-md;
+  padding      : $input-padding-y $input-padding-x;
+  font-family  : $font-body;
+  font-size    : $font-size-md;
+  color        : $text-primary;
+  width        : 100%;
+  outline      : none;
+  resize       : vertical;
+  min-height   : 72px;
+  transition   : $transition-border;
+
+  &:focus { border-color: $gold; }
+}
+
+// Input de formulario (login)
+.form-group  { margin-bottom: $space-8; }
+
+.form-label  {
+  display     : block;
+  font-size   : $font-size-sm;
+  font-weight : $font-weight-medium;
+  color       : $text-secondary;
+  margin-bottom: $space-3;
+}
+
+.form-input {
+  width        : 100%;
+  background   : $bg-raised;
+  border       : 1px solid $border-default;
+  border-radius: $radius-md;
+  padding      : 9px $input-padding-x;
+  font-family  : $font-body;
+  font-size    : $font-size-base;
+  color        : $text-primary;
+  outline      : none;
+  transition   : $transition-border;
+
+  &:focus        { border-color: $gold; }
+  &::placeholder { color: $text-muted; }
+}
+
+// Select de filtros
+.filter-select {
+  background   : $bg-surface;
+  border       : 1px solid $border-subtle;
+  border-radius: $radius-md;
+  padding      : $space-3 $space-5;
+  font-family  : $font-body;
+  font-size    : $font-size-md;
+  color        : $text-secondary;
+  outline      : none;
+  cursor       : pointer;
+  transition   : $transition-border;
+
+  &:focus { border-color: $gold; }
+
+  option { background: $bg-surface; }
+}
+
+.filter-bar {
+  display      : flex;
+  gap          : $space-4;
+  align-items  : center;
+  margin-bottom: $space-8;
+  flex-wrap    : wrap;
+}
+
+.filter-spacer { flex: 1; }
+
+// Barra de búsqueda del topbar
+.search-bar {
+  display      : flex;
+  align-items  : center;
+  gap          : $search-bar-gap;
+  background   : $bg-raised;
+  border       : 1px solid $border-subtle;
+  border-radius: $radius-md;
+  padding      : $space-3 $input-padding-x;
+  width        : $search-bar-width;
+
+  i { color: $text-muted; font-size: $font-size-lg; }
+
+  .search-input {
+    flex        : 1;
+    background  : transparent;
+    border      : none;
+    outline     : none;
+    font-family : $font-body;
+    font-size   : $font-size-md;
+    color       : $text-primary;
+    
+    &::placeholder { color: $text-muted; }
+  }
+
+  kbd {
+    margin-left   : auto;
+    font-size     : $font-size-xxs;
+    color         : $text-muted;
+    background    : $bg-overlay;
+    padding       : $space-1 $space-2 + 1;
+    border-radius : $radius-xs;
+    font-family   : $font-body;
+  }
+}
+
+// Hint de campo
+.field-lock {
+  display    : flex;
+  align-items: center;
+  gap        : $space-3;
+  font-size  : $font-size-xs;
+  color      : $text-muted;
+  margin-top : $space-2 + 1;
+
+  i { font-size: $font-size-sm; }
+}
+
+
+// ============================================================
+// CARDS
+// ============================================================
+
+.card {
+  background   : $bg-surface;
+  border       : 1px solid $border-subtle;
+  border-radius: $radius-xl;
+  overflow     : hidden;
+}
+
+.card-header {
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  padding        : $card-header-padding;
+  border-bottom  : 1px solid $border-subtle;
+}
+
+.card-title {
+  font-family : $font-display;
+  font-size   : $font-size-base;
+  font-weight : $font-weight-semibold;
+  color       : $text-primary;
+}
+
+.card-body { padding: $card-body-padding; }
+
+
+// ============================================================
+// STAT CARDS
+// ============================================================
+
+.stats-grid {
+  display               : grid;
+  grid-template-columns : $grid-stats-cols;
+  gap                   : $grid-gap-sm;
+  margin-bottom         : $grid-gap-section;
+}
+
+.stat-card {
+  background   : $bg-surface;
+  border       : 1px solid $border-subtle;
+  border-radius: $radius-xl;
+  padding      : $space-8 $space-9;
+  position     : relative;
+  overflow     : hidden;
+
+  // Barra de acento superior
+  &::after {
+    content  : '';
+    position : absolute;
+    top: 0; left: 0; right: 0;
+    height   : $stat-accent-bar-height;
+  }
+
+  &.gold::after  { background: $gold; }
+  &.green::after { background: $green; }
+  &.blue::after  { background: $blue; }
+  &.red::after   { background: $red; }
+}
+
+.stat-icon {
+  width        : $avatar-size-md;
+  height       : $avatar-size-md;
+  border-radius: $radius-md;
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  font-size    : $font-size-2xl;
+  margin-bottom: $space-6;
+
+  &.gold  { background: $gold-bg;  color: $gold; }
+  &.green { background: $green-bg; color: $green; }
+  &.blue  { background: $blue-bg;  color: $blue; }
+  &.red   { background: $red-bg;   color: $red; }
+}
+
+.stat-val {
+  font-family    : $font-display;
+  font-size      : $font-size-6xl;
+  font-weight    : $font-weight-bold;
+  color          : $text-primary;
+  letter-spacing : $letter-spacing-tight;
+}
+
+.stat-label {
+  font-size    : $font-size-sm;
+  color        : $text-muted;
+  margin-top   : $space-1 + 1;
+}
+
+.stat-delta {
+  font-size    : $font-size-sm;
+  margin-top   : $space-4;
+  display      : flex;
+  align-items  : center;
+  gap          : $space-2;
+}
+
+.delta-up   { color: $green; }
+.delta-down { color: $red; }
+
+
+// ============================================================
+// AVATARS
+// ============================================================
+
+.avatar {
+  width        : $avatar-size-sm;
+  height       : $avatar-size-sm;
+  border-radius: 50%;
+  background   : linear-gradient(135deg, $avatar-gradient-from, $avatar-gradient-to);
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  font-family  : $font-display;
+  font-size    : $font-size-sm;
+  font-weight  : $font-weight-bold;
+  color        : $avatar-text-color;
+  flex-shrink  : 0;
+}
+
+
+// ============================================================
+// ÍCONOS (wrappers de íconos de contexto)
+// ============================================================
+
+// Contenedor de ícono con fondo de color semántico
+.icon-wrap {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  border-radius  : $radius-md;
+  flex-shrink    : 0;
+
+  &.gold  { background: $gold-bg;  color: $gold;  }
+  &.green { background: $green-bg; color: $green; }
+  &.blue  { background: $blue-bg;  color: $blue;  }
+  &.red   { background: $red-bg;   color: $red;   }
+}
+
+// SEO overview icon
+.seo-ov-icon {
+  font-size  : $font-size-3xl;
+  margin-top : $space-1;
+}
+
+
+// ============================================================
+// BADGES
+// ============================================================
+
+.badge {
+  display      : inline-flex;
+  align-items  : center;
+  gap          : $space-2;
+  padding      : $badge-padding-y $badge-padding-x;
+  border-radius: $radius-full;
+  font-size    : $font-size-xs;
+  font-weight  : $font-weight-medium;
+  white-space  : nowrap;
+
+  i { font-size: $badge-icon-size; }
+}
+
+// Variantes semánticas
+.badge-green { background: $green-bg; color: $green; }
+.badge-gold  { background: $gold-bg;  color: $gold;  }
+.badge-red   { background: $red-bg;   color: $red;   }
+.badge-blue  { background: $blue-bg;  color: $blue;  }
+.badge-gray  { background: rgba(255, 255, 255, 0.06); color: $text-secondary; }
+
+
+// ============================================================
+// TABLAS
+// ============================================================
+
+.table-wrap { overflow-x: auto; }
+
+table {
+  width           : 100%;
+  border-collapse : collapse;
+}
+
+thead th {
+  padding        : $table-th-padding;
+  text-align     : left;
+  font-size      : $font-size-xxs;
+  font-weight    : $font-weight-medium;
+  letter-spacing : $letter-spacing-wider;
+  color          : $text-muted;
+  text-transform : uppercase;
+  border-bottom  : 1px solid $border-subtle;
+  white-space    : nowrap;
+}
+
+tbody tr {
+  border-bottom : 1px solid $border-subtle;
+  transition    : $transition-bg;
+
+  &:last-child { border-bottom: none; }
+  &:hover      { background: $bg-raised; }
+}
+
+tbody td {
+  padding        : $table-td-padding;
+  font-size      : $font-size-md;
+  color          : $text-primary;
+  vertical-align : middle;
+}
+
+.td-muted { color: $text-secondary; }
+.td-dim   { color: $text-muted; font-size: $font-size-sm; }
+
+
+// ============================================================
+// LISTAS (Feed de actividad / Sync progress)
+// ============================================================
+
+// Activity feed
+.feed-item {
+  display       : flex;
+  gap           : $space-6;
+  align-items   : flex-start;
+  padding       : $space-6 0;
+  border-bottom : 1px solid $border-subtle;
+
+  &:last-child { border-bottom: none; }
+}
+
+.feed-dot {
+  width        : $feed-dot-size;
+  height       : $feed-dot-size;
+  border-radius: 50%;
+  margin-top   : $space-2 + 1;
+  flex-shrink  : 0;
+
+  &.gold  { background: $gold; }
+  &.green { background: $green; }
+  &.blue  { background: $blue; }
+}
+
+.feed-text {
+  font-size  : $font-size-md;
+  color      : $text-secondary;
+  line-height: $line-height-normal;
+
+  strong {
+    color      : $text-primary;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.feed-time {
+  font-size  : $font-size-xs;
+  color      : $text-muted;
+  margin-top : $space-1 + 1;
+}
+
+// Sync progress list
+.sync-item {
+  display       : flex;
+  align-items   : center;
+  gap           : $space-5;
+  padding       : $space-5 0;
+  border-bottom : 1px solid $border-subtle;
+
+  &:last-child { border-bottom: none; }
+}
+
+.sync-name  { flex: 1; font-size: $font-size-md; }
+.sync-steps { font-size: $font-size-xs; color: $text-muted; }
+
+// SEO rows
+.seo-row {
+  display       : flex;
+  gap           : 14px;
+  align-items   : center;
+  padding       : $space-6 0;
+  border-bottom : 1px solid $border-subtle;
+
+  &:last-child { border-bottom: none; }
+}
+
+.seo-info         { flex: 1; min-width: 0; }
+.seo-movie-title  { font-size: $font-size-md; font-weight: $font-weight-medium; color: $text-primary; }
+.seo-slug         {
+  font-size    : $font-size-xs;
+  color        : $text-muted;
+  font-family  : monospace;
+  margin-top   : $space-1;
+  overflow     : hidden;
+  text-overflow: ellipsis;
+  white-space  : nowrap;
+}
+.seo-checks {
+  display   : flex;
+  gap       : $space-2 + 1;
+  margin-top: $space-3;
+  flex-wrap : wrap;
+}
+
+
+// ============================================================
+// MODAL / OVERLAYS
+// ============================================================
+
+// Login overlay (modal de pantalla completa)
+.login-view {
+  display        : none;
+  min-height     : 100vh;
+  background     : $bg-base;
+  position       : fixed;
+  inset          : 0;
+  z-index        : $z-modal;
+  align-items    : center;
+  justify-content: center;
+  flex-direction : column;
+
+  &.active { display: flex; }
+}
+
+.login-bg {
+  position  : absolute;
+  inset     : 0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(232, 160, 48, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 70%, rgba(96, 165, 250, 0.04) 0%, transparent 50%);
+}
+
+.login-card {
+  position     : relative;
+  width        : $login-card-width;
+  background   : $bg-surface;
+  border       : 1px solid $border-default;
+  border-radius: $radius-2xl;
+  padding      : $space-18 $space-16;
+}
+
+.login-logo {
+  display        : flex;
+  align-items    : center;
+  gap            : $space-5;
+  margin-bottom  : $space-14;
+  justify-content: center;
+
+  .logo-mark {
+    width : $logo-mark-size-lg;
+    height: $logo-mark-size-lg;
+    i     { font-size: $font-size-3xl; }
+  }
+
+  .logo-text { font-size: $font-size-4xl; }
+}
+
+.login-headline {
+  font-family : $font-display;
+  font-size   : $font-size-2xl;
+  font-weight : $font-weight-bold;
+  color       : $text-primary;
+  text-align  : center;
+  margin-bottom: $space-3;
+}
+
+.login-sub {
+  font-size    : $font-size-md;
+  color        : $text-muted;
+  text-align   : center;
+  margin-bottom: $space-14;
+}
+
+.login-divider {
+  display    : flex;
+  align-items: center;
+  gap        : $space-6;
+  margin     : $space-10 0;
+
+  &::before,
+  &::after {
+    content   : '';
+    flex      : 1;
+    height    : 1px;
+    background: $border-subtle;
+  }
+
+  span {
+    font-size: $font-size-sm;
+    color    : $text-muted;
+  }
+}
+
+.login-footer {
+  margin-top : $space-12;
+  text-align : center;
+  font-size  : $font-size-sm;
+  color      : $text-muted;
+}
+
+.login-error {
+  margin-top    : $space-4;
+  padding       : $space-3 $space-5;
+  background    : $red-bg;
+  border        : 1px solid $red-border;
+  border-radius : $radius-md;
+  color         : $red;
+  font-size     : $font-size-sm;
+  font-weight   : $font-weight-medium;
+  text-align    : center;
+}
+
+// Decoración de puntos de película
+.login-film-strip {
+  display        : flex;
+  gap            : $space-3;
+  justify-content: center;
+  margin-top     : $space-12;
+}
+
+.film-dot {
+  width        : $film-dot-size;
+  height       : $film-dot-size;
+  border-radius: 50%;
+  background   : $border-default;
+
+  &.active { background: $gold; }
+}
+
+
+// ============================================================
+// TABS
+// ============================================================
+
+.tabs {
+  display       : flex;
+  gap           : 0;
+  border-bottom : 1px solid $border-subtle;
+  margin-bottom : $space-10;
+}
+
+.tab {
+  padding       : $space-5 $space-8;
+  font-size     : $font-size-md;
+  font-weight   : $font-weight-medium;
+  color         : $text-muted;
+  cursor        : pointer;
+  border-bottom : 2px solid transparent;
+  margin-bottom : -1px;
+  transition    : $transition-default;
+
+  &:hover  { color: $text-secondary; }
+  &.active { color: $gold; border-bottom-color: $gold; }
+}
+
+
+// ============================================================
+// POSTER / IMÁGENES DE PELÍCULAS
+// ============================================================
+
+.poster-thumb {
+  width        : $poster-thumb-w;
+  height       : $poster-thumb-h;
+  border-radius: $radius-xs;
+  background   : $bg-overlay;
+  border       : 1px solid $border-subtle;
+  object-fit   : cover;
+  object-position: center;
+  flex-shrink  : 0;
+  display      : block;
+}
+
+.movie-poster-lg {
+  width          : $poster-lg-w;
+  height         : $poster-lg-h;
+  border-radius  : $radius-xl;
+  background     : $bg-overlay;
+  border         : 1px solid $border-subtle;
+  object-fit     : cover;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  flex-direction : column;
+  gap            : $space-4;
+  color          : $text-muted;
+
+  i    { font-size: 36px; }
+  span { font-size: $font-size-xs; }
+}
+
+.movie-cell {
+  display    : flex;
+  align-items: center;
+  gap        : $space-5;
+}
+
+.movie-cell-info { min-width: 0; }
+
+.movie-cell-title {
+  font-weight  : $font-weight-medium;
+  font-size    : $font-size-md;
+  white-space  : nowrap;
+  overflow     : hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-cell-sub {
+  font-size  : $font-size-xs;
+  color      : $text-muted;
+  margin-top : $space-1;
+}
+
+
+// ============================================================
+// CAST STRIP
+// ============================================================
+
+.cast-strip {
+  display        : flex;
+  gap            : $space-5;
+  overflow-x     : auto;
+  padding-bottom : $space-2;
+}
+
+.cast-item {
+  flex-shrink : 0;
+  width       : $cast-item-width;
+}
+
+.cast-photo {
+  width          : $cast-photo-size;
+  height         : $cast-photo-size;
+  border-radius  : $radius-md;
+  background     : $bg-overlay;
+  border         : 1px solid $border-subtle;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  color          : $text-muted;
+  margin-bottom  : $space-2 + 1;
+  overflow       : hidden;
+
+  i { font-size: 24px; }
+}
+
+.cast-name {
+  font-size  : $font-size-xs;
+  color      : $text-primary;
+  line-height: $line-height-tight;
+  text-align : center;
+}
+
+.cast-char {
+  font-size  : $font-size-xxs;
+  color      : $text-muted;
+  text-align : center;
+  margin-top : $space-1;
+}
+
+
+// ============================================================
+// METADATA (película detail)
+// ============================================================
+
+.movie-detail-row {
+  display               : grid;
+  grid-template-columns : $grid-movie-detail;
+  gap                   : $grid-gap-lg;
+}
+
+.meta-grid {
+  display               : grid;
+  grid-template-columns : $grid-meta;
+  gap                   : $grid-gap-sm;
+}
+
+.meta-key {
+  font-size      : $font-size-xs;
+  color          : $text-muted;
+  margin-bottom  : $space-1 + 1;
+  text-transform : uppercase;
+  letter-spacing : $letter-spacing-wide;
+}
+
+.meta-val { font-size: $font-size-md; color: $text-primary; }
+
+.genre-tags { display: flex; flex-wrap: wrap; gap: $space-2 + 1; }
+
+.genre-tag {
+  padding      : $space-1 9px;
+  border-radius: $radius-full;
+  font-size    : $font-size-xs;
+  font-weight  : $font-weight-medium;
+  background   : $bg-overlay;
+  border       : 1px solid $border-default;
+  color        : $text-secondary;
+}
+
+
+// ============================================================
+// SCORE BAR
+// ============================================================
+
+.score-bar {
+  display    : flex;
+  align-items: center;
+  gap        : $space-4;
+}
+
+.score-track {
+  flex         : 1;
+  height       : $score-bar-height;
+  background   : $bg-overlay;
+  border-radius: $radius-xs - 1;
+  overflow     : hidden;
+}
+
+.score-fill {
+  height       : 100%;
+  border-radius: $radius-xs - 1;
+  background   : $gold;
+}
+
+.score-val {
+  font-size  : $font-size-sm;
+  color      : $text-secondary;
+  min-width  : 28px;
+  text-align : right;
+}
+
+
+// ============================================================
+// MINI CHART (barras decorativas)
+// ============================================================
+
+.mini-chart {
+  display    : flex;
+  align-items: flex-end;
+  gap        : $mini-chart-gap;
+  height     : $mini-chart-height;
+}
+
+.bar {
+  flex         : 1;
+  border-radius: $radius-xs - 1 + 1px $radius-xs - 1 + 1px 0 0;
+  background   : $gold-bg-hover;
+  transition   : $transition-bg;
+
+  &:hover  { background: $gold; }
+  &.active { background: $gold; }
+}
+
+
+// ============================================================
+// PROGRESS BAR
+// ============================================================
+
+.progress-track {
+  width        : $progress-track-width;
+  height       : $progress-track-height;
+  background   : $bg-overlay;
+  border-radius: $radius-xs - 1;
+  overflow     : hidden;
+}
+
+.progress-fill {
+  height       : 100%;
+  border-radius: $radius-xs - 1;
+
+  &.green { background: $green; }
+  &.gold  { background: $gold; }
+  &.blue  { background: $blue; }
+}
+
+
+// ============================================================
+// PLATAFORMAS (pills de streaming)
+// ============================================================
+
+.platform-pill {
+  display      : inline-flex;
+  align-items  : center;
+  gap          : $space-2 + 1;
+  padding      : $space-1 $space-4;
+  border-radius: $radius-full;
+  font-size    : $font-size-xs;
+  font-weight  : $font-weight-medium;
+  background   : $bg-overlay;
+  color        : $text-secondary;
+  border       : 1px solid $border-subtle;
+}
+
+.platform-dot {
+  width        : $platform-dot-size;
+  height       : $platform-dot-size;
+  border-radius: 50%;
+}
+
+
+// ============================================================
+// SYNC PANEL (TMDB)
+// ============================================================
+
+.sync-panel {
+  background   : $bg-surface;
+  border       : 1px solid $gold-dim;
+  border-radius: $radius-xl;
+  padding      : $space-8 $space-9;
+  margin-bottom: $space-8;
+  display      : flex;
+  align-items  : center;
+  gap          : 14px;
+}
+
+.sync-spinner {
+  width        : $sync-spinner-size;
+  height       : $sync-spinner-size;
+  border       : $sync-spinner-border solid $border-default;
+  border-top-color: $gold;
+  border-radius: 50%;
+  animation    : spin $animation-spin-duration $transition-easing-linear infinite;
+  flex-shrink  : 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.sync-pulse { animation: pulse $animation-pulse-duration ease-in-out infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+
+// ============================================================
+// SEO OVERVIEW CARDS
+// ============================================================
+
+.seo-overview {
+  display               : grid;
+  grid-template-columns : $grid-seo-overview;
+  gap                   : $grid-gap-sm;
+  margin-bottom         : $space-10;
+}
+
+.seo-ov-card {
+  background   : $bg-surface;
+  border       : 1px solid $border-subtle;
+  border-radius: $radius-xl;
+  padding      : $space-8;
+  display      : flex;
+  gap          : $space-6;
+  align-items  : flex-start;
+}
+
+.seo-ov-val   { font-family: $font-display; font-size: $font-size-4xl; font-weight: $font-weight-bold; color: $text-primary; }
+.seo-ov-label { font-size: $font-size-xs; color: $text-muted; margin-top: $space-1; }
+
+// SEO score ring
+.seo-score-ring {
+  width      : $seo-ring-size;
+  height     : $seo-ring-size;
+  position   : relative;
+  flex-shrink: 0;
+
+  svg { transform: rotate(-90deg); }
+}
+
+.seo-score-num {
+  position       : absolute;
+  inset          : 0;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  font-family    : $font-display;
+  font-size      : $font-size-2xl;
+  font-weight    : $font-weight-bold;
+}
+
+
+// ============================================================
+// PAGINACIÓN
+// ============================================================
+
+.pagination {
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  padding        : $space-6 0 0;
+}
+
+.page-info { font-size: $font-size-sm; color: $text-muted; }
+
+.page-btns { display: flex; gap: $space-2; }
+
+.page-btn {
+  width        : $page-btn-size;
+  height       : $page-btn-size;
+  border-radius: $radius-md;
+  background   : transparent;
+  border       : 1px solid $border-subtle;
+  color        : $text-secondary;
+  font-size    : $font-size-sm;
+  cursor       : pointer;
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  transition   : $transition-default;
+
+  &:hover   { background: $bg-raised; }
+  &.current { background: $gold-bg; color: $gold; border-color: $gold-border-pg; }
+}
+
+
+// ============================================================
+// SCROLLBAR
+// ============================================================
+
+::-webkit-scrollbar {
+  width  : $scrollbar-size;
+  height : $scrollbar-size;
+}
+
+::-webkit-scrollbar-track { background: transparent; }
+
+::-webkit-scrollbar-thumb {
+  background   : $border-default;
+  border-radius: $radius-xs - 1;
+}
+
+
+// ============================================================
+// TOOLTIP
+// ============================================================
+
+[data-tip] {
+  position: relative;
+  cursor  : default;
+
+  &:hover::after {
+    content      : attr(data-tip);
+    position     : absolute;
+    top          : calc(100% + #{$tooltip-offset});
+    left         : 50%;
+    transform    : translateX(-50%);
+    background   : $bg-overlay;
+    border       : 1px solid $border-default;
+    color        : $text-secondary;
+    font-size    : $font-size-xs;
+    padding      : $space-2 $space-4;
+    border-radius: $radius-xs + 2;
+    white-space  : nowrap;
+    z-index      : $tooltip-z-index;
+    pointer-events: none;
+  }
+}
+
+
+// ============================================================
+// PELÍCULAS PAGE STYLES
+// ============================================================
+
+// Filters bar
+.filters-bar {
+  display      : flex;
+  align-items  : center;
+  gap          : $space-4;
+  margin-bottom: $space-8;
+  flex-wrap    : wrap;
+  transition   : opacity 0.3s ease, transform 0.3s ease;
+}
+
+.search-box {
+  display      : flex;
+  align-items  : center;
+  gap          : $space-3;
+  background   : $bg-raised;
+  border       : 1px solid $border-subtle;
+  border-radius: $radius-md;
+  padding      : $space-3 $input-padding-x;
+  flex         : 1;
+  min-width    : 200px;
+  transition   : border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus-within {
+    border-color: $gold;
+    box-shadow  : 0 0 0 3px rgba(232, 160, 48, 0.1);
+  }
+
+  input {
+    flex        : 1;
+    background  : transparent;
+    border      : none;
+    outline     : none;
+    font-family : $font-body;
+    font-size   : $font-size-md;
+    color       : $text-primary;
+
+    &::placeholder { color: $text-muted; }
+  }
+}
+
+.filter-group {
+  display    : flex;
+  gap        : $space-3;
+  align-items: center;
+}
+
+.select {
+  background   : $bg-raised;
+  border       : 1px solid $border-subtle;
+  border-radius: $radius-md;
+  padding      : $space-3 $space-5;
+  font-family  : $font-body;
+  font-size    : $font-size-md;
+  color        : $text-secondary;
+  outline      : none;
+  cursor       : pointer;
+  transition   : border-color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
+
+  &:focus { border-color: $gold; }
+  &:hover { border-color: $border-default; }
+
+  option { background: $bg-surface; }
+}
+
+// Stats bar
+.stats-bar {
+  display      : flex;
+  gap          : $space-8;
+  margin-bottom: $space-8;
+  padding      : $space-6 $space-8;
+  background   : $bg-surface;
+  border       : 1px solid $border-subtle;
+  border-radius: $radius-xl;
+  transition   : transform 0.3s ease, opacity 0.3s ease;
+}
+
+.stat-item {
+  display       : flex;
+  flex-direction: column;
+  gap           : $space-1;
+  transition    : transform 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.stat-count {
+  font-family    : $font-display;
+  font-size      : $font-size-2xl;
+  font-weight    : $font-weight-bold;
+  color          : $text-primary;
+  transition     : color 0.2s ease;
+}
+
+.stat-label {
+  font-size: $font-size-xs;
+  color    : $text-muted;
+}
+
+// Action group
+.action-group {
+  display    : flex;
+  gap        : $space-2;
+  align-items: center;
+}
+
+.btn-icon {
+  width        : 28px;
+  height       : 28px;
+  border-radius: $radius-md;
+  background   : transparent;
+  border       : 1px solid $border-subtle;
+  color        : $text-secondary;
+  font-size    : $font-size-md;
+  cursor       : pointer;
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  transition   : $transition-default;
+
+  &:hover {
+    background : $bg-raised;
+    color      : $text-primary;
+  }
+}
+
+.badge {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// Pagination centered variant for movies page
+.pagination-centered {
+  justify-content: center !important;
+  gap: $space-4;
+  margin-bottom: $space-8;
+  
+  .page-info {
+    transition: opacity 0.2s ease;
+  }
+}
+
+tbody tr {
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease, opacity 0.2s ease;
+  
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

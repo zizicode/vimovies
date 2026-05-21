@@ -1,0 +1,53 @@
+{
+  "maxMovies": 5,
+  "schedule": "0 * * * *",
+  "delayBetweenMovies": 500,
+  "minPopularity": 9,
+  "minVoteAverage": 0,
+  "minVoteCount": 0,
+  "releaseYearStart": 2000,
+  "releaseYearEnd": 2010,
+  "includeAdult": true,
+  "originalLanguage": "en",
+  "genres": [],
+  "syncGenres": true,
+  "syncCredits": true,
+  "syncVideos": true,
+  "syncWatchProviders": true,
+  "syncRatings": true,
+  "maxCast": 15,
+  "maxCrew": 15,
+  "crewJobs": [
+    "Director",
+    "Screenplay",
+    "Story",
+    "Producer",
+    "Executive Producer",
+    "Original Music Composer",
+    "Director of Photography"
+  ],
+  "videoSites": [
+    "YouTube"
+  ],
+  "videoTypes": [
+    "Trailer",
+    "Teaser",
+    "Clip",
+    "Featurette"
+  ],
+  "includeOfficialOnly": false,
+  "providerRegions": [
+    "ES",
+    "MX",
+    "AR",
+    "CO",
+    "US"
+  ],
+  "skipExisting": true,
+  "updateExisting": false,
+  "preserveEditorial": true,
+  "preserveSeo": true,
+  "defaultStatus": "published",
+  "defaultNoindex": false,
+  "defaultSitemapPriority": "medium"
+}

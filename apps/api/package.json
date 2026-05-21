@@ -1,0 +1,36 @@
+{
+  "name": "@vimovies/api",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec tsx src/index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.0.2",
+    "@hono/zod-validator": "^0.2.2",
+    "@supabase/supabase-js": "^2.105.4",
+    "@vimovies/db": "workspace:*",
+    "@vimovies/repositories": "workspace:*",
+    "@vimovies/types": "workspace:*",
+    "@vimovies/utils": "workspace:*",
+    "@vimovies/validators": "workspace:*",
+    "axios": "^1.16.1",
+    "dotenv": "^17.4.2",
+    "hono": "^4.12.18",
+    "node-cron": "^4.2.1",
+    "socket.io": "^4.8.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.41",
+    "@types/node-cron": "^3.0.11",
+    "@vimovies/tsconfig": "workspace:*",
+    "nodemon": "^3.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

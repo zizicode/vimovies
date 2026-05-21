@@ -1,0 +1,16 @@
+{
+  "name": "@vimovies/validators",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@vimovies/types": "workspace:*",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@vimovies/tsconfig": "workspace:*",
+    "typescript": "^5.4.0"
+  }
+}

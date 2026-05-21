@@ -1,0 +1,23 @@
+{
+  "name": "@vimovies/repositories",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/"
+  },
+  "dependencies": {
+    "@vimovies/types": "workspace:*",
+    "@vimovies/utils": "workspace:*",
+    "@vimovies/db": "workspace:*",
+    "zod": "^3.25.76",
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "@vimovies/tsconfig": "workspace:*",
+    "typescript": "^5.4.0"
+  }
+}

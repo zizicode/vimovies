@@ -1,0 +1,10 @@
+export { MediaController } from './media.controller'
+export { GenresController } from './genres.controller'
+export { PlatformsController } from './platforms.controller'
+export { UsersController } from './users.controller'
+export { ArticlesController } from './articles.controller'
+export { CuratedListsController } from './curated-lists.controller'
+
+export { MovieController } from './tmdb/movie.controller'
+export { PersonController } from './tmdb/person.controller'
+export { CreditsController } from './tmdb/credits.controller'

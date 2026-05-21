@@ -1,0 +1,30 @@
+{
+  "name": "vimovies",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "clean": "turbo clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "dev:api": "turbo dev --filter=@vimovies/api",
+    "dev:web": "turbo dev --filter=@vimovies/web",
+    "dev:dashboard": "turbo dev --filter=@vimovies/dashboard",
+    "dev:all": "turbo dev --filter=./apps/*",
+    "build:api": "turbo build --filter=@vimovies/api",
+    "build:web": "turbo build --filter=@vimovies/web",
+    "build:dashboard": "turbo build --filter=@vimovies/dashboard"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.41",
+    "prettier": "^3.8.3",
+    "turbo": "^2.9.12",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

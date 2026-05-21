@@ -1,0 +1,1990 @@
+{
+  "info": {
+    "name": "Vimovies API",
+    "description": "API completa para Vimovies - Películas, Series, Artículos y más",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🔓 Public",
+      "item": [
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Admin Login",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"admin@vimovies.com\",\n  \"password\": \"your-password\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/admin/login",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["auth", "admin", "login"]
+                },
+                "description": "Login para administradores. Devuelve token JWT."
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Media",
+          "item": [
+            {
+              "name": "List Media",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/media?page=1&per_page=20&status=published",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["media"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "key": "status",
+                      "value": "published"
+                    },
+                    {
+                      "key": "media_type",
+                      "value": "movie",
+                      "description": "movie, series, documentary, short, special",
+                      "disabled": true
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "tmdb_popularity",
+                      "description": "tmdb_popularity, release_date, editorial_rating",
+                      "disabled": true
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "desc",
+                      "description": "asc, desc",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "description": "Lista paginada de películas/series"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Media by Slug",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/media/:slug?region=ES",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["media", ":slug"],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "ES",
+                      "description": "ES, MX, AR, CO, US"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "inception-2010"
+                    }
+                  ]
+                },
+                "description": "Obtener detalles completos de una película/serie por slug"
+              },
+              "response": []
+            },
+            {
+              "name": "Search Media",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/search?q=batman&limit=10",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["search"],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "batman"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                },
+                "description": "Búsqueda de películas/series por título"
+              },
+              "response": []
+            },
+            {
+              "name": "List by Genre",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/media/genre/:genreSlug?page=1&per_page=20",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["media", "genre", ":genreSlug"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "genreSlug",
+                      "value": "accion"
+                    }
+                  ]
+                },
+                "description": "Listar películas por género"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Genres",
+          "item": [
+            {
+              "name": "List Genres",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/genres",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["genres"]
+                },
+                "description": "Listar todos los géneros"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Genre by Slug",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/genres/:slug",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["genres", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "accion"
+                    }
+                  ]
+                },
+                "description": "Obtener género por slug"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Genre with Media",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/genres/:slug/media",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["genres", ":slug", "media"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "accion"
+                    }
+                  ]
+                },
+                "description": "Obtener género con sus películas"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Platforms",
+          "item": [
+            {
+              "name": "List Platforms",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/platforms",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["platforms"]
+                },
+                "description": "Listar todas las plataformas"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Platform by Slug",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/platforms/:slug",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["platforms", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "netflix"
+                    }
+                  ]
+                },
+                "description": "Obtener plataforma por slug"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Articles",
+          "item": [
+            {
+              "name": "List Articles",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/articles?page=1&per_page=20",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["articles"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "key": "status",
+                      "value": "published",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "description": "Listar artículos"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Article by Slug",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/articles/:slug",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["articles", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "mejores-peliculas-2024"
+                    }
+                  ]
+                },
+                "description": "Obtener artículo por slug"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Curated Lists",
+          "item": [
+            {
+              "name": "List Curated Lists",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/lists",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["lists"]
+                },
+                "description": "Listar listas curadas"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Curated List by Slug",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/lists/:slug",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["lists", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "mejores-peliculas-accion"
+                    }
+                  ]
+                },
+                "description": "Obtener lista curada por slug"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Users (Profile)",
+          "item": [
+            {
+              "name": "Get My Profile",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/me",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["users", "me"]
+                },
+                "description": "Obtener perfil del usuario autenticado"
+              },
+              "response": []
+            },
+            {
+              "name": "Update My Profile",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"Nuevo Nombre\",\n  \"locale_pref\": \"es\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users/me",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["users", "me"]
+                },
+                "description": "Actualizar perfil del usuario"
+              },
+              "response": []
+            },
+            {
+              "name": "My Reviews",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/me/reviews",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["users", "me", "reviews"]
+                },
+                "description": "Obtener reseñas del usuario"
+              },
+              "response": []
+            },
+            {
+              "name": "Upsert Review",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"media_id\": \"uuid-del-media\",\n  \"rating\": 8,\n  \"body\": \"Excelente película\",\n  \"locale\": \"es\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users/me/reviews",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["users", "me", "reviews"]
+                },
+                "description": "Crear o actualizar reseña"
+              },
+              "response": []
+            },
+            {
+              "name": "My Watchlists",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/me/watchlists",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["users", "me", "watchlists"]
+                },
+                "description": "Obtener listas de reproducción del usuario"
+              },
+              "response": []
+            },
+            {
+              "name": "Create Watchlist",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name_es\": \"Mis Favoritos\",\n  \"description\": \"Películas que quiero ver\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users/me/watchlists",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["users", "me", "watchlists"]
+                },
+                "description": "Crear lista de reproducción"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Watchlist",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/users/watchlists/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["users", "watchlists", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "watchlist-id"
+                    }
+                  ]
+                },
+                "description": "Obtener lista de reproducción por ID"
+              },
+              "response": []
+            },
+            {
+              "name": "Add to Watchlist",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"media_id\": \"uuid-del-media\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users/watchlists/:id/items",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["users", "watchlists", ":id", "items"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "watchlist-id"
+                    }
+                  ]
+                },
+                "description": "Agregar película a lista de reproducción"
+              },
+              "response": []
+            },
+            {
+              "name": "Remove from Watchlist",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/watchlists/:id/items/:mediaId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["users", "watchlists", ":id", "items", ":mediaId"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "watchlist-id"
+                    },
+                    {
+                      "key": "mediaId",
+                      "value": "media-id"
+                    }
+                  ]
+                },
+                "description": "Eliminar película de lista de reproducción"
+              },
+              "response": []
+            },
+            {
+              "name": "Mark as Watched",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"watched\": true,\n  \"watched_at\": \"2024-01-01T00:00:00Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users/watchlists/:id/items/:mediaId/watched",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["users", "watchlists", ":id", "items", ":mediaId", "watched"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "watchlist-id"
+                    },
+                    {
+                      "key": "mediaId",
+                      "value": "media-id"
+                    }
+                  ]
+                },
+                "description": "Marcar película como vista"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "TMDB (External)",
+          "item": [
+            {
+              "name": "Get Popular Movies",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tmdb/movies/popular?page=1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["tmdb", "movies", "popular"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "description": "Obtener películas populares desde TMDB"
+              },
+              "response": []
+            },
+            {
+              "name": "Search TMDB Movies",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tmdb/movies/search?q=inception",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["tmdb", "movies", "search"],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "inception"
+                    }
+                  ]
+                },
+                "description": "Buscar películas en TMDB"
+              },
+              "response": []
+            },
+            {
+              "name": "Get TMDB Movie by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tmdb/movies/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["tmdb", "movies", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "27205"
+                    }
+                  ]
+                },
+                "description": "Obtener película de TMDB por ID"
+              },
+              "response": []
+            },
+            {
+              "name": "Get TMDB Credits",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tmdb/credits/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["tmdb", "credits", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "27205"
+                    }
+                  ]
+                },
+                "description": "Obtener créditos de TMDB por ID"
+              },
+              "response": []
+            },
+            {
+              "name": "Get TMDB Person",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tmdb/people/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["tmdb", "people", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "525"
+                    }
+                  ]
+                },
+                "description": "Obtener persona de TMDB por ID"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "🔒 Admin",
+      "item": [
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Verify Token",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/auth/verify",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["auth", "verify"]
+                },
+                "description": "Verificar token JWT actual"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Media",
+          "item": [
+            {
+              "name": "Admin List Media",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/media?page=1&per_page=20",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "media"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "key": "status",
+                      "value": "published",
+                      "disabled": true
+                    },
+                    {
+                      "key": "noindex",
+                      "value": "false",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "description": "Listar media (admin - incluye todos los estados)"
+              },
+              "response": []
+            },
+            {
+              "name": "Admin Get Media by ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/media/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "media", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "media-uuid"
+                    }
+                  ]
+                },
+                "description": "Obtener media por ID (admin)"
+              },
+              "response": []
+            },
+            {
+              "name": "Update Editorial",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"editorial_review_es\": \"Reseña editorial en español\",\n  \"editorial_rating\": 8.5,\n  \"status\": \"published\",\n  \"noindex\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/media/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "media", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "media-uuid"
+                    }
+                  ]
+                },
+                "description": "Actualizar campos editoriales de media"
+              },
+              "response": []
+            },
+            {
+              "name": "Patch (Partial Update)",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title_es\": \"Nuevo título\",\n  \"status\": \"published\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/media/:id/patch",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "media", ":id", "patch"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "media-uuid"
+                    }
+                  ]
+                },
+                "description": "Actualización parcial de campos individuales"
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Media",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/media/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "media", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "media-uuid"
+                    }
+                  ]
+                },
+                "description": "Eliminar media"
+              },
+              "response": []
+            },
+            {
+              "name": "Sync Genres",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"genre_ids\": [28, 12, 16]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/media/:id/genres",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "media", ":id", "genres"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "media-uuid"
+                    }
+                  ]
+                },
+                "description": "Sincronizar géneros de media"
+              },
+              "response": []
+            },
+            {
+              "name": "Sync Videos",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videos\": [\n    {\n      \"locale\": \"es\",\n      \"video_type\": \"trailer\",\n      \"video_site\": \"youtube\",\n      \"external_key\": \"youtube-video-id\",\n      \"title\": \"Trailer Oficial\",\n      \"is_official\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/media/:id/videos",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "media", ":id", "videos"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "media-uuid"
+                    }
+                  ]
+                },
+                "description": "Sincronizar videos de media"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Genres",
+          "item": [
+            {
+              "name": "Create Genre",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tmdb_id\": 28,\n  \"slug\": \"accion\",\n  \"name_es\": \"Acción\",\n  \"name_en\": \"Action\",\n  \"sitemap_priority\": \"high\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/genres",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "genres"]
+                },
+                "description": "Crear género"
+              },
+              "response": []
+            },
+            {
+              "name": "Update Genre",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name_es\": \"Acción Actualizado\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/genres/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "genres", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "genre-id"
+                    }
+                  ]
+                },
+                "description": "Actualizar género"
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Genre",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/genres/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "genres", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "genre-id"
+                    }
+                  ]
+                },
+                "description": "Eliminar género"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Platforms",
+          "item": [
+            {
+              "name": "Admin List Platforms",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/platforms",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "platforms"]
+                },
+                "description": "Listar plataformas (admin)"
+              },
+              "response": []
+            },
+            {
+              "name": "Create Platform",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"slug\": \"netflix\",\n  \"name_es\": \"Netflix\",\n  \"name_en\": \"Netflix\",\n  \"platform_type\": \"svod\",\n  \"tmdb_provider_id\": 8,\n  \"is_active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/platforms",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "platforms"]
+                },
+                "description": "Crear plataforma"
+              },
+              "response": []
+            },
+            {
+              "name": "Update Platform",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name_es\": \"Netflix Actualizado\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/platforms/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "platforms", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "platform-id"
+                    }
+                  ]
+                },
+                "description": "Actualizar plataforma"
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Platform",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/platforms/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "platforms", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "platform-id"
+                    }
+                  ]
+                },
+                "description": "Eliminar plataforma"
+              },
+              "response": []
+            },
+            {
+              "name": "Sync Providers for Media",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"region\": \"ES\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/media/:mediaId/providers/sync",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "media", ":mediaId", "providers", "sync"],
+                  "variable": [
+                    {
+                      "key": "mediaId",
+                      "value": "media-uuid"
+                    }
+                  ]
+                },
+                "description": "Sincronizar providers de media desde TMDB"
+              },
+              "response": []
+            },
+            {
+              "name": "Update Affiliate",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"affiliate_url_es\": \"https://affiliate-es.com\",\n  \"affiliate_url_en\": \"https://affiliate-en.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/providers/:id/affiliate",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "providers", ":id", "affiliate"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "provider-id"
+                    }
+                  ]
+                },
+                "description": "Actualizar URLs de afiliados"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Articles",
+          "item": [
+            {
+              "name": "Admin List Articles",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/articles?page=1&per_page=20",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "articles"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ]
+                },
+                "description": "Listar artículos (admin)"
+              },
+              "response": []
+            },
+            {
+              "name": "Admin Get Article by ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/articles/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "articles", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "article-id"
+                    }
+                  ]
+                },
+                "description": "Obtener artículo por ID (admin)"
+              },
+              "response": []
+            },
+            {
+              "name": "Create Article",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"slug\": \"mejores-peliculas-2024\",\n  \"title_es\": \"Las Mejores Películas de 2024\",\n  \"excerpt_es\": \"Un resumen de las mejores películas del año\",\n  \"content_es\": \"Contenido completo del artículo...\",\n  \"category_id\": 1,\n  \"intent\": \"informational\",\n  \"locale\": \"es\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/articles",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "articles"]
+                },
+                "description": "Crear artículo"
+              },
+              "response": []
+            },
+            {
+              "name": "Update Article",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title_es\": \"Título Actualizado\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/articles/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "articles", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "article-id"
+                    }
+                  ]
+                },
+                "description": "Actualizar artículo"
+              },
+              "response": []
+            },
+            {
+              "name": "Publish Article",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/articles/:id/publish",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "articles", ":id", "publish"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "article-id"
+                    }
+                  ]
+                },
+                "description": "Publicar artículo"
+              },
+              "response": []
+            },
+            {
+              "name": "Archive Article",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/articles/:id/archive",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "articles", ":id", "archive"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "article-id"
+                    }
+                  ]
+                },
+                "description": "Archivar artículo"
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Article",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/articles/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "articles", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "article-id"
+                    }
+                  ]
+                },
+                "description": "Eliminar artículo"
+              },
+              "response": []
+            },
+            {
+              "name": "Create FAQ",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question_es\": \"¿Qué es esto?\",\n  \"answer_es\": \"Es una respuesta\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/articles/:id/faqs",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "articles", ":id", "faqs"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "article-id"
+                    }
+                  ]
+                },
+                "description": "Crear FAQ para artículo"
+              },
+              "response": []
+            },
+            {
+              "name": "Update FAQ",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question_es\": \"Pregunta actualizada\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/faqs/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "faqs", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "faq-id"
+                    }
+                  ]
+                },
+                "description": "Actualizar FAQ"
+              },
+              "response": []
+            },
+            {
+              "name": "Delete FAQ",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/faqs/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "faqs", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "faq-id"
+                    }
+                  ]
+                },
+                "description": "Eliminar FAQ"
+              },
+              "response": []
+            },
+            {
+              "name": "Sync Mentions",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mentions\": [\n    {\n      \"media_id\": \"uuid-1\",\n      \"mention_type\": \"primary\",\n      \"display_order\": 1\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/articles/:id/mentions",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "articles", ":id", "mentions"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "article-id"
+                    }
+                  ]
+                },
+                "description": "Sincronizar menciones de media en artículo"
+              },
+              "response": []
+            },
+            {
+              "name": "Sync Tags",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tag_ids\": [1, 2, 3]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/articles/:id/tags",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "articles", ":id", "tags"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "article-id"
+                    }
+                  ]
+                },
+                "description": "Sincronizar tags de artículo"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Curated Lists",
+          "item": [
+            {
+              "name": "Create Curated List",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"slug\": \"mejores-peliculas-accion\",\n  \"title_es\": \"Las Mejores Películas de Acción\",\n  \"list_type\": \"ranking\",\n  \"status\": \"published\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/lists",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "lists"]
+                },
+                "description": "Crear lista curada"
+              },
+              "response": []
+            },
+            {
+              "name": "Update Curated List",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title_es\": \"Título Actualizado\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/lists/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "lists", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "list-id"
+                    }
+                  ]
+                },
+                "description": "Actualizar lista curada"
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Curated List",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/lists/:id",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "lists", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "list-id"
+                    }
+                  ]
+                },
+                "description": "Eliminar lista curada"
+              },
+              "response": []
+            },
+            {
+              "name": "Sync List Items",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"media_id\": \"uuid-1\",\n      \"rank_position\": 1\n    },\n    {\n      \"media_id\": \"uuid-2\",\n      \"rank_position\": 2\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/lists/:id/items",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "lists", ":id", "items"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "list-id"
+                    }
+                  ]
+                },
+                "description": "Sincronizar items de lista curada"
+              },
+              "response": []
+            },
+            {
+              "name": "Add Item to List",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"media_id\": \"uuid-1\",\n  \"rank_position\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/lists/:id/items",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "lists", ":id", "items"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "list-id"
+                    }
+                  ]
+                },
+                "description": "Agregar item a lista curada"
+              },
+              "response": []
+            },
+            {
+              "name": "Remove Item from List",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/lists/:id/items/:mediaId",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "lists", ":id", "items", ":mediaId"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "list-id"
+                    },
+                    {
+                      "key": "mediaId",
+                      "value": "media-uuid"
+                    }
+                  ]
+                },
+                "description": "Eliminar item de lista curada"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Users",
+          "item": [
+            {
+              "name": "Admin List Users",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/users?page=1&per_page=20",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "users"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ]
+                },
+                "description": "Listar usuarios (admin)"
+              },
+              "response": []
+            },
+            {
+              "name": "Update User Role",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"editor\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/users/:id/role",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "users", ":id", "role"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "user-id"
+                    }
+                  ]
+                },
+                "description": "Actualizar rol de usuario"
+              },
+              "response": []
+            },
+            {
+              "name": "Deactivate User",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_active\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/users/:id/deactivate",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "users", ":id", "deactivate"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "user-id"
+                    }
+                  ]
+                },
+                "description": "Desactivar usuario"
+              },
+              "response": []
+            },
+            {
+              "name": "Admin List Reviews",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/users/reviews?page=1&per_page=20",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "users", "reviews"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ]
+                },
+                "description": "Listar todas las reseñas (admin)"
+              },
+              "response": []
+            },
+            {
+              "name": "Moderate Review",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_visible\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/users/reviews/:id/moderate",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "users", "reviews", ":id", "moderate"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "review-id"
+                    }
+                  ]
+                },
+                "description": "Moderar reseña (aprobar/rechazar)"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
