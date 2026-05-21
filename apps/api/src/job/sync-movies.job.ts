@@ -1,8 +1,10 @@
 import cron, { type ScheduledTask } from 'node-cron'
-import { supabase } from '@vimovies/db'
+import { getSupabase as getSupabaseClient } from '@vimovies/db'
 import { MovieRepository, PersonRepository } from '@vimovies/repositories'
 import { generateMediaSlug, generatePersonSlug, extractYear, shouldNoindex, normalizeTmdbVideoType } from '@vimovies/utils'
 import { MediaType, ContentStatus, SitemapPriority, PersonRole, VideoSite, RatingSource, SupportedLocale, type PersonDetails, type MovieDetails, type Credits, type Cast, type Crew } from '@vimovies/types'
+
+const supabase = getSupabaseClient()
 
 interface ExtendedMovieDetails extends MovieDetails {
   videos?: { results: Array<{ id: string; key: string; name: string; site: string; type: string; official: boolean; published_at: string; iso_639_1: string }> }

@@ -1,11 +1,50 @@
-# React + TypeScript + Vite
+# Vimovies Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dashboard for managing the Vimovies movie database application.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+# Install dependencies (from root)
+pnpm install
+
+# Start development server
+pnpm --filter dashboard dev
+```
+
+The dashboard will be available at `http://localhost:5173`
+
+## Environment Variables
+
+Create a `.env` file in the dashboard directory:
+
+```env
+VITE_API_URL=http://localhost:3002
+```
+
+## Build
+
+```bash
+pnpm --filter dashboard build
+```
+
+The built files will be in the `dist` directory.
+
+## Vercel Deployment
+
+This project is configured for Vercel deployment with the following settings:
+
+- **Framework**: Vite
+- **Build Command**: `pnpm --filter dashboard build`
+- **Output Directory**: `dist`
+- **Environment Variables**: Set `VITE_API_URL` to your production API URL
+
+### Deploying to Vercel
+
+1. Connect your repository to Vercel
+2. Set the root directory to `apps/dashboard`
+3. Add environment variable `VITE_API_URL` with your production API URL
+4. Deploy
 
 ## React Compiler
 

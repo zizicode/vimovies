@@ -1,4 +1,4 @@
-import { supabase } from '@vimovies/db'
+import { getSupabase as supabase } from '@vimovies/db'
 import type { Genre, SitemapPriority } from '@vimovies/types'
 
 // ─────────────────────────────────────────────────────────────────────────────

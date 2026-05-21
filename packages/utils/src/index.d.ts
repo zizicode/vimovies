@@ -1,4 +1,3 @@
-export { env } from './env.js';
 export { verifyHardcodedPassword, generateToken, verifyToken, createAuthMiddleware } from './auth.utils.js';
 export type { JWTPayload } from './auth.utils.js';
 export * from './reponse.utils.js';

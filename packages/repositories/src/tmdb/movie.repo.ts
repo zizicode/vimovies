@@ -1,5 +1,5 @@
 import { httpRequest } from '@vimovies/utils'
-import { env } from '@vimovies/utils'
+
 import {
   TmdbEndpoint,
   buildTmdbEndpoint,
@@ -19,9 +19,9 @@ export class MovieRepository {
     const [es, en] = await Promise.allSettled([
       httpRequest<MovieDetails>({
         url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_DETAILS, { id }),
-        baseURL: env.TMDB_BASE_URL,
+        baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
         method: 'GET',
-        token: env.TMDB_API_KEY,
+        token: process.env.TMDB_API_KEY,
         params: {
           language: 'es-ES',
           append_to_response: MOVIE_APPEND,
@@ -30,9 +30,9 @@ export class MovieRepository {
 
       httpRequest<MovieDetails>({
         url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_DETAILS, { id }),
-        baseURL: env.TMDB_BASE_URL,
+        baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
         method: 'GET',
-        token: env.TMDB_API_KEY,
+        token: process.env.TMDB_API_KEY,
         params: {
           language: 'en-US',
           append_to_response: MOVIE_APPEND,
@@ -63,9 +63,9 @@ export class MovieRepository {
   static async getPopular(page = 1): Promise<ApiResponse<MovieListResponse>> {
     return await httpRequest({
       url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_POPULAR),
-      baseURL: env.TMDB_BASE_URL,
+      baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: env.TMDB_API_KEY,
+      token: process.env.TMDB_API_KEY,
       params: {
         language: 'es-ES',
         page,
@@ -76,9 +76,9 @@ export class MovieRepository {
   static async getTrending(page = 1): Promise<ApiResponse> {
     return await httpRequest({
       url: buildTmdbEndpoint(TmdbEndpoint.TRENDING_MOVIE_WEEK),
-      baseURL: env.TMDB_BASE_URL,
+      baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: env.TMDB_API_KEY,
+      token: process.env.TMDB_API_KEY,
       params: {
         language: 'es-ES',
         page,
@@ -89,9 +89,9 @@ export class MovieRepository {
   static async search(query: string, page = 1): Promise<ApiResponse> {
     return await httpRequest({
       url: buildTmdbEndpoint(TmdbEndpoint.SEARCH_MOVIE),
-      baseURL: env.TMDB_BASE_URL,
+      baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: env.TMDB_API_KEY,
+      token: process.env.TMDB_API_KEY,
       params: {
         query,
         language: 'es-ES',
@@ -104,9 +104,9 @@ export class MovieRepository {
   static async Movie_En(id: number): Promise<ApiResponse> {
     return await httpRequest({
       url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_DETAILS, {id}),
-      baseURL: env.TMDB_BASE_URL,
+      baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: env.TMDB_API_KEY,
+      token: process.env.TMDB_API_KEY,
       params: {
         language: 'en-EN',
       },
@@ -116,9 +116,9 @@ export class MovieRepository {
   static async Movie_Es(id: number): Promise<ApiResponse> {
     return await httpRequest({
       url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_DETAILS, {id}),
-      baseURL: env.TMDB_BASE_URL,
+      baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: env.TMDB_API_KEY,
+      token: process.env.TMDB_API_KEY,
       params: {
         language: 'es-ES',
       },
@@ -128,18 +128,18 @@ export class MovieRepository {
   static async Movie_Video(id: number): Promise<ApiResponse> {
     return await httpRequest({
       url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_VIDEOS, {id}),
-      baseURL: env.TMDB_BASE_URL,
+      baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: env.TMDB_API_KEY,
+      token: process.env.TMDB_API_KEY,
     })
   }
 
   static async Movie_Providers(id: number): Promise<ApiResponse> {
     return await httpRequest({
       url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_WATCH_PROVIDERS, {id}),
-      baseURL: env.TMDB_BASE_URL,
+      baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: env.TMDB_API_KEY,
+      token: process.env.TMDB_API_KEY,
     })
   }
 
