@@ -204,7 +204,7 @@ async function syncMediaGenres(mediaId: string, genres: Array<{ id: number; name
   log(`Sincronizando ${genres.length} géneros para media ${mediaId}`)
 
   for (const genre of genres) {
-    let genreData = null
+    let genreData: { id: string } | null = null
     
     // Buscar género existente
     const { data: existing } = await supabase
@@ -338,7 +338,7 @@ async function syncMediaWatchProviders(mediaId: string, providers: NonNullable<E
     ]
 
     for (const provider of allProviders) {
-      let platformData = null
+      let platformData: { id: string } | null = null
       
       // Buscar plataforma existente
       const { data: existing } = await supabase
