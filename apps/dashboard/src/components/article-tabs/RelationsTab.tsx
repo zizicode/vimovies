@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { TiEdit } from 'react-icons/ti';
 import type { ArticleItem } from '../../services/api.service';
-import { useArticlesStore } from '../../store/articles.store';
 import './RelationsTab.scss';
 
 interface RelationsTabProps {
