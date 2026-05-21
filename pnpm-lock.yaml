@@ -32,12 +32,18 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.105.4
         version: 2.105.4
+      '@types/node':
+        specifier: ^20.19.41
+        version: 20.19.41
       '@vimovies/db':
         specifier: workspace:*
         version: link:../../packages/db
       '@vimovies/repositories':
         specifier: workspace:*
         version: link:../../packages/repositories
+      '@vimovies/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
       '@vimovies/types':
         specifier: workspace:*
         version: link:../../packages/types
@@ -62,28 +68,22 @@ importers:
       socket.io:
         specifier: ^4.8.3
         version: 4.8.3
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
       zod:
         specifier: ^3.25.76
         version: 3.25.76
     devDependencies:
-      '@types/node':
-        specifier: ^20.19.41
-        version: 20.19.41
       '@types/node-cron':
         specifier: ^3.0.11
         version: 3.0.11
-      '@vimovies/tsconfig':
-        specifier: workspace:*
-        version: link:../../tooling/typescript
       nodemon:
         specifier: ^3.1.14
         version: 3.1.14
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
 
   apps/dashboard:
     dependencies:
