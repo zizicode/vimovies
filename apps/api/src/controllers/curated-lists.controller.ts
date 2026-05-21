@@ -20,6 +20,7 @@ export const CuratedListsController = {
   async getBySlug(c: Context) {
     try {
       const { slug } = c.req.param()
+      if (!slug) return notFound(c, 'Lista')
       const list     = await CuratedListsService.findBySlug(slug)
       if (!list) return notFound(c, 'Lista')
       return ok(c, list)
@@ -45,6 +46,7 @@ export const CuratedListsController = {
   async update(c: Context) {
     try {
       const { id } = c.req.param()
+      if (!id) return notFound(c, 'Lista')
       const body   = await c.req.json()
       const list   = await CuratedListsService.update(id, body)
       if (!list) return notFound(c, 'Lista')
@@ -58,6 +60,7 @@ export const CuratedListsController = {
   async remove(c: Context) {
     try {
       const { id } = c.req.param()
+      if (!id) return notFound(c, 'Lista')
       await CuratedListsService.remove(id)
       return ok(c, { message: 'Lista eliminada' })
     } catch (err) {
@@ -81,6 +84,7 @@ export const CuratedListsController = {
   async addItem(c: Context) {
     try {
       const { id } = c.req.param()
+      if (!id) return notFound(c, 'Lista')
       const body   = await c.req.json()
       const item   = await CuratedListsService.addItem(id, body)
       return ok(c, item, 201)
@@ -93,6 +97,7 @@ export const CuratedListsController = {
   async removeItem(c: Context) {
     try {
       const { id, mediaId } = c.req.param()
+      if (!id || !mediaId) return notFound(c, 'Lista')
       await CuratedListsService.removeItem(id, mediaId)
       return ok(c, { message: 'Item eliminado de la lista' })
     } catch (err) {

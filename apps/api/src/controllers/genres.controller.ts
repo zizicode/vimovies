@@ -20,6 +20,7 @@ export const GenresController = {
   async getBySlug(c: Context) {
     try {
       const { slug } = c.req.param()
+      if (!slug) return notFound(c, 'Género')
       const genre = await GenreService.findBySlug(slug)
       if (!genre) return notFound(c, 'GÃ©nero')
       return ok(c, genre)
@@ -32,6 +33,7 @@ export const GenresController = {
   async getWithMedia(c: Context) {
     try {
       const { slug } = c.req.param()
+      if (!slug) return notFound(c, 'Género')
       const limit    = Number(c.req.query('limit') ?? 20)
       const result   = await GenreService.findBySlugWithMedia(slug, limit)
       if (!result) return notFound(c, 'GÃ©nero')

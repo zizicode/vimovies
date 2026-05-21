@@ -18,7 +18,7 @@ export class MovieController {
         )
       }
 
-      const movie = await MovieRepository.getById(id) as ApiResponse<MovieDetails>;
+      const movie = await MovieRepository.getById(id) as unknown as ApiResponse<MovieDetails>;
       return c.json(movie, movie.success ? 200 : movie.status as 500)
     } catch (error) {
       return c.json(

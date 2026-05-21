@@ -3,6 +3,7 @@
   "extends": "@vimovies/tsconfig/vite-app.json",
   "compilerOptions": {
     "jsx": "react-jsx",
+    "skipLibCheck": true,
     "paths": {
       "@/*": ["./src/*"]
     }

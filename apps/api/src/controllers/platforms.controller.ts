@@ -18,6 +18,7 @@ export const PlatformsController = {
   async getBySlug(c: Context) {
     try {
       const { slug } = c.req.param()
+      if (!slug) return notFound(c, 'Plataforma')
       const region   = c.req.query('region') ?? 'ES'
       const page     = Number(c.req.query('page')     ?? 1)
       const per_page = Number(c.req.query('per_page') ?? 20)
@@ -93,7 +94,7 @@ export const PlatformsController = {
     try {
       const { id }          = c.req.param()
       const { affiliate_url } = await c.req.json()
-      const result          = await PlatformsService.updateWatchProviderAffiliate(id, affiliate_url)
+      const result          = await PlatformsService.updateAffiliateUrl(id, affiliate_url)
       return ok(c, result)
     } catch (err) {
       return serverError(c, err)

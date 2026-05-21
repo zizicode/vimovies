@@ -11,7 +11,10 @@ export const SeoController = {
     try {
       const entity_type = c.req.query('entity_type')
       const locale = c.req.query('locale')
-      const data = await SeoService.listAuditLogs({ entity_type, locale })
+      const data = await SeoService.listAuditLogs({ 
+        ...(entity_type && { entity_type }), 
+        ...(locale && { locale }) 
+      })
       return ok(c, data)
     } catch (err) {
       return serverError(c, err)

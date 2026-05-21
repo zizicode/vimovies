@@ -231,7 +231,7 @@ export const ArticlesController = {
         { slug: 'misterio', name_es: 'Misterio', name_en: 'Mystery' },
       ];
 
-      const createdTags = [];
+      const createdTags: any[] = [];
       for (const tag of defaultTags) {
         try {
           const created = await ArticlesService.createTag(tag);

@@ -174,7 +174,7 @@ export const PlatformsService = {
 
     const { data, error } = await query
     if (error) throw error
-    return (data ?? []) as MediaWatchProvider[]
+    return (data ?? []) as unknown as MediaWatchProvider[]
   },
 
   // ── Sync desde TMDB ───────────────────────────────────────────────────────
