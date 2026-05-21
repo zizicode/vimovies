@@ -9,7 +9,7 @@ export class PersonRepository {
             url: buildTmdbEndpoint(TmdbEndpoint.PERSON_DETAILS, { id }),
             baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
             method: 'GET',
-            token: process.env.TMDB_API_KEY,
+            ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
         })
     }
 
@@ -18,7 +18,7 @@ export class PersonRepository {
             url: buildTmdbEndpoint(TmdbEndpoint.PERSON_DETAILS, { id }),
             baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
             method: 'GET',
-            token: process.env.TMDB_API_KEY,
+            ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
             params: {
                 language: 'en-En'
             }
@@ -30,7 +30,7 @@ export class PersonRepository {
             url: buildTmdbEndpoint(TmdbEndpoint.PERSON_DETAILS, { id }),
             baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
             method: 'GET',
-            token: process.env.TMDB_API_KEY,
+            ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
             params: {
                 language: 'es-ES'
             }

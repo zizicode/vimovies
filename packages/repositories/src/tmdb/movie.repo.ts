@@ -21,7 +21,7 @@ export class MovieRepository {
         url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_DETAILS, { id }),
         baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
         method: 'GET',
-        token: process.env.TMDB_API_KEY,
+        ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
         params: {
           language: 'es-ES',
           append_to_response: MOVIE_APPEND,
@@ -32,7 +32,7 @@ export class MovieRepository {
         url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_DETAILS, { id }),
         baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
         method: 'GET',
-        token: process.env.TMDB_API_KEY,
+        ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
         params: {
           language: 'en-US',
           append_to_response: MOVIE_APPEND,
@@ -65,7 +65,7 @@ export class MovieRepository {
       url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_POPULAR),
       baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: process.env.TMDB_API_KEY,
+      ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
       params: {
         language: 'es-ES',
         page,
@@ -78,7 +78,7 @@ export class MovieRepository {
       url: buildTmdbEndpoint(TmdbEndpoint.TRENDING_MOVIE_WEEK),
       baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: process.env.TMDB_API_KEY,
+      ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
       params: {
         language: 'es-ES',
         page,
@@ -91,7 +91,7 @@ export class MovieRepository {
       url: buildTmdbEndpoint(TmdbEndpoint.SEARCH_MOVIE),
       baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: process.env.TMDB_API_KEY,
+      ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
       params: {
         query,
         language: 'es-ES',
@@ -106,7 +106,7 @@ export class MovieRepository {
       url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_DETAILS, {id}),
       baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: process.env.TMDB_API_KEY,
+      ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
       params: {
         language: 'en-EN',
       },
@@ -118,7 +118,7 @@ export class MovieRepository {
       url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_DETAILS, {id}),
       baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: process.env.TMDB_API_KEY,
+      ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
       params: {
         language: 'es-ES',
       },
@@ -130,7 +130,7 @@ export class MovieRepository {
       url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_VIDEOS, {id}),
       baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: process.env.TMDB_API_KEY,
+      ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
     })
   }
 
@@ -139,7 +139,7 @@ export class MovieRepository {
       url: buildTmdbEndpoint(TmdbEndpoint.MOVIE_WATCH_PROVIDERS, {id}),
       baseURL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       method: 'GET',
-      token: process.env.TMDB_API_KEY,
+      ...(process.env.TMDB_API_KEY && { token: process.env.TMDB_API_KEY }),
     })
   }
 
