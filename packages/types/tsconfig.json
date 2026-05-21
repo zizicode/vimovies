@@ -1,5 +1,5 @@
 {
-  "extends": "@vimovies/tsconfig/base.json",
+  "extends": "../../tooling/typescript/base.json",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",
