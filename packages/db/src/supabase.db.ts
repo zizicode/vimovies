@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import ws from 'ws'
 import { env } from './env.js'
 
 export const supabase = createClient(
@@ -10,7 +11,7 @@ export const supabase = createClient(
       persistSession: false,
     },
     realtime: {
-      transport: undefined as any,
+      transport: ws as any,
     },
   }
 )
