@@ -1,6 +1,6 @@
 import { buildTmdbEndpoint, TmdbEndpoint } from '@vimovies/types'
 import { httpRequest } from '@vimovies/utils'
-import { env } from '@vimovies/utils/src/env'
+import { env } from '@vimovies/utils'
 
 
 export class CreditsRepository {

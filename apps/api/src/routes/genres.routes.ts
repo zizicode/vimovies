@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { GenresController } from '../controllers/genres.controller'
-import { createAuthMiddleware } from '@vimovies/utils/src/auth.utils'
+import { createAuthMiddleware } from '@vimovies/utils'
 
 export const genresRoutes = new Hono()
 

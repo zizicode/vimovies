@@ -1,5 +1,5 @@
 import { Socket } from 'socket.io'
-import { verifyToken } from '@vimovies/utils/src/auth.utils'
+import { verifyToken } from '@vimovies/utils'
 
 /**
  * Middleware para verificar que el usuario es admin antes de unirse al canal 'job'

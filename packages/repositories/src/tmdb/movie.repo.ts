@@ -1,5 +1,5 @@
 import { httpRequest } from '@vimovies/utils'
-import { env } from '@vimovies/utils/src/env'
+import { env } from '@vimovies/utils'
 import {
   TmdbEndpoint,
   buildTmdbEndpoint,

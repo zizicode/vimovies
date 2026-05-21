@@ -3,7 +3,7 @@ import { MediaController } from '../controllers/media.controller'
 import { MediaCreditsController } from '../controllers/media-credits.controller'
 import { MediaWatchProvidersController } from '../controllers/media-watch-providers.controller'
 import { MediaVideosController } from '../controllers/media-videos.controller'
-import { createAuthMiddleware } from '@vimovies/utils/src/auth.utils'
+import { createAuthMiddleware } from '@vimovies/utils'
 
 export const mediaRoutes = new Hono()
 

@@ -1,4 +1,4 @@
-import { verifyHardcodedPassword, generateToken, verifyToken, type JWTPayload } from '@vimovies/utils/src/auth.utils'
+import { verifyHardcodedPassword, generateToken, verifyToken, type JWTPayload } from '@vimovies/utils'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // INPUT TYPES

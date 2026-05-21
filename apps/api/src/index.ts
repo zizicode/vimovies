@@ -1,7 +1,7 @@
 // apps/api/src/index.ts
 import { serve } from '@hono/node-server'
 import { app } from './app'
-import { env } from '@vimovies/utils/src/env'
+import { env } from '@vimovies/utils'
 import { initializeSocket } from './socket'
 // import { SyncMoviesJob } from './job/sync-movies.job'
 

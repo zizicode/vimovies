@@ -5,6 +5,9 @@
     "types": ["node"],
     "outDir": "dist",
     "rootDir": "src",
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "paths": {
       "@/*": ["./src/*"]
     }

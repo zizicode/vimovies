@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { PlatformsController } from '../controllers/platforms.controller'
-import { createAuthMiddleware } from '@vimovies/utils/src/auth.utils'
+import { createAuthMiddleware } from '@vimovies/utils'
 
 export const platformsRoutes = new Hono()
 

@@ -4,7 +4,7 @@ import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { prettyJSON } from 'hono/pretty-json'
 import { secureHeaders } from 'hono/secure-headers'
-import { env } from '@vimovies/utils/src/env'
+import { env } from '@vimovies/utils'
 import routes from './routes'
 import { sitemapRoutes } from './routes/sitemap.routes'
 

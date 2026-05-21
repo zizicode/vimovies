@@ -1,5 +1,12 @@
 // packages/utils/src/index.ts
 
+// Env
+export { env } from './env'
+
+// Auth
+export { verifyHardcodedPassword, generateToken, verifyToken, createAuthMiddleware } from './auth.utils'
+export type { JWTPayload } from './auth.utils'
+
 // Response utils
 export * from './reponse.utils';
 

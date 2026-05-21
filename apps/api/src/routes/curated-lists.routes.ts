@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { CuratedListsController } from '../controllers/curated-lists.controller'
-import { createAuthMiddleware } from '@vimovies/utils/src/auth.utils'
+import { createAuthMiddleware } from '@vimovies/utils'
 
 export const curatedListsRoutes = new Hono()
 
