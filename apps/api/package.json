@@ -13,8 +13,10 @@
     "@hono/node-server": "^2.0.2",
     "@hono/zod-validator": "^0.2.2",
     "@supabase/supabase-js": "^2.105.4",
+    "@types/node": "^20.19.41",
     "@vimovies/db": "workspace:*",
     "@vimovies/repositories": "workspace:*",
+    "@vimovies/tsconfig": "workspace:*",
     "@vimovies/types": "workspace:*",
     "@vimovies/utils": "workspace:*",
     "@vimovies/validators": "workspace:*",
@@ -23,14 +25,12 @@
     "hono": "^4.12.18",
     "node-cron": "^4.2.1",
     "socket.io": "^4.8.3",
+    "typescript": "^5.9.3",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@types/node": "^20.19.41",
     "@types/node-cron": "^3.0.11",
-    "@vimovies/tsconfig": "workspace:*",
     "nodemon": "^3.1.14",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "tsx": "^4.21.0"
   }
 }
