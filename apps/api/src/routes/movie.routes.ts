@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { MovieController } from '../controllers/tmdb/movie.controller'
+import { MovieController } from '../controllers/tmdb/movie.controller.js'
 
 export const movieRoutes = new Hono()
 

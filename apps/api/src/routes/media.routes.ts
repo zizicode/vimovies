@@ -1,8 +1,8 @@
 import { Hono } from 'hono'
-import { MediaController } from '../controllers/media.controller'
-import { MediaCreditsController } from '../controllers/media-credits.controller'
-import { MediaWatchProvidersController } from '../controllers/media-watch-providers.controller'
-import { MediaVideosController } from '../controllers/media-videos.controller'
+import { MediaController } from '../controllers/media.controller.js'
+import { MediaCreditsController } from '../controllers/media-credits.controller.js'
+import { MediaWatchProvidersController } from '../controllers/media-watch-providers.controller.js'
+import { MediaVideosController } from '../controllers/media-videos.controller.js'
 import { createAuthMiddleware } from '@vimovies/utils'
 
 export const mediaRoutes = new Hono()

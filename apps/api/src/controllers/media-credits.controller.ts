@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { MediaCreditsService } from '../services/media-credits.service'
+import { MediaCreditsService } from '../services/media-credits.service.js'
 import { ok, notFound, serverError } from '@vimovies/utils'
 
 export const MediaCreditsController = {

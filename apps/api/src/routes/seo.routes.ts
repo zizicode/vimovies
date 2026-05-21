@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { SeoController } from '../controllers/seo.controller'
+import { SeoController } from '../controllers/seo.controller.js'
 import { createAuthMiddleware } from '@vimovies/utils'
 
 export const seoRoutes = new Hono()

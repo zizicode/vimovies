@@ -11,7 +11,8 @@
                             "rootDir":  "src",
                             "noEmit":  false,
                             "allowImportingTsExtensions":  false,
-                            "module":  "ESNext",
+                            "module":  "NodeNext",
+                            "moduleResolution":  "NodeNext",
                             "paths":  {
                                           "@/*":  [
                                                       "./src/*"

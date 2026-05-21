@@ -85,7 +85,7 @@ export const UsersService = {
    * @deprecated Usa AuthService.adminLogin en su lugar
    */
   async adminLogin(password: string): Promise<{ token: string } | null> {
-    const { AuthService } = await import('./auth.service')
+    const { AuthService } = await import('./auth.service.js')
     const result = await AuthService.adminLogin({ password })
     return result ? { token: result.token } : null
   },

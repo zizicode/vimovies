@@ -5,7 +5,7 @@ import {
   buildPeopleSitemap,
   buildGenresSitemap,
   buildArticlesSitemap,
-} from '../services/sitemap.service'
+} from '../services/sitemap.service.js'
 
 const sitemapRoutes = new Hono()
 

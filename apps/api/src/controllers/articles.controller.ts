@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { ArticlesService } from '../services/articles.service'
+import { ArticlesService } from '../services/articles.service.js'
 import { ok, paginated, notFound, serverError } from '@vimovies/utils'
 import type { ContentStatus, ArticleIntent } from '@vimovies/types'
 

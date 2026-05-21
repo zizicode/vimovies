@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { MediaVideosService } from '../services/media-videos.service'
+import { MediaVideosService } from '../services/media-videos.service.js'
 import { ok, notFound, serverError } from '@vimovies/utils'
 
 export const MediaVideosController = {

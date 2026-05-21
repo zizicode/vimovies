@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { MediaService } from '../services/media.service'
+import { MediaService } from '../services/media.service.js'
 import { ok, paginated, notFound, serverError } from '@vimovies/utils'
 import type { MediaType, ContentStatus } from '@vimovies/types'
 

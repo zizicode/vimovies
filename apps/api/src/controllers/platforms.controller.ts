@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { PlatformsService } from '../services/platforms.service'
+import { PlatformsService } from '../services/platforms.service.js'
 import { ok, notFound, serverError } from '@vimovies/utils'
 
 export const PlatformsController = {

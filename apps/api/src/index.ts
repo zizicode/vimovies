@@ -1,9 +1,9 @@
 // apps/api/src/index.ts
 import { serve } from '@hono/node-server'
-import { app } from './app'
+import { app } from './app.js'
 import { env } from '@vimovies/utils'
-import { initializeSocket } from './socket'
-// import { SyncMoviesJob } from './job/sync-movies.job'
+import { initializeSocket } from './socket/index.js'
+// import { SyncMoviesJob } from './job/sync-movies.job.js'
 
 const port = env.PORT
 

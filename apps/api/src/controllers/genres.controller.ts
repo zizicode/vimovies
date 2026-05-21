@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { GenreService } from '../services/genres.service'
+import { GenreService } from '../services/genres.service.js'
 import { ok, paginated, notFound, serverError } from '@vimovies/utils'
 
 export const GenresController = {

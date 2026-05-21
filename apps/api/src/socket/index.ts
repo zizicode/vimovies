@@ -1,6 +1,6 @@
 import { Server as HttpServer } from 'http'
 import { Server } from 'socket.io'
-import { setupJobChannel } from './job.handler'
+import { setupJobChannel } from './job.handler.js'
 
 let io: Server | null = null
 

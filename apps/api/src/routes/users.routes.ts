@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { UsersController } from '../controllers/users.controller'
+import { UsersController } from '../controllers/users.controller.js'
 import { createAuthMiddleware } from '@vimovies/utils'
 
 export const usersRoutes = new Hono()

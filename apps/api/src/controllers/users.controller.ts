@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { UsersService } from '../services/users.service'
+import { UsersService } from '../services/users.service.js'
 import {
   ok,
   fail,

@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { CuratedListsController } from '../controllers/curated-lists.controller'
+import { CuratedListsController } from '../controllers/curated-lists.controller.js'
 import { createAuthMiddleware } from '@vimovies/utils'
 
 export const curatedListsRoutes = new Hono()

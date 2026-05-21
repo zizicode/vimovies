@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { PeopleService } from '../services/people.service'
+import { PeopleService } from '../services/people.service.js'
 import { ok, paginated, notFound, serverError } from '@vimovies/utils'
 
 export const PeopleController = {

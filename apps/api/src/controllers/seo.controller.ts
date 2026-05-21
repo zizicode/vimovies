@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { SeoService } from '../services/seo.service'
+import { SeoService } from '../services/seo.service.js'
 import { ok, serverError, notFound } from '@vimovies/utils'
 
 export const SeoController = {

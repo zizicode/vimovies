@@ -1,11 +1,11 @@
-export { MediaService } from './media.service'
-export { GenreService } from './genres.service'
-export { PeopleService } from './people.service'
-export { PlatformsService } from './platforms.service'
-export { UsersService } from './users.service'
-export { ArticlesService } from './articles.service'
-export { AuthorsService } from './authors.service'
-export { CuratedListsService } from './curated-lists.service'
+export { MediaService } from './media.service.js'
+export { GenreService } from './genres.service.js'
+export { PeopleService } from './people.service.js'
+export { PlatformsService } from './platforms.service.js'
+export { UsersService } from './users.service.js'
+export { ArticlesService } from './articles.service.js'
+export { AuthorsService } from './authors.service.js'
+export { CuratedListsService } from './curated-lists.service.js'
 
 export type {
   MediaFilters,
@@ -14,7 +14,7 @@ export type {
   UpsertRatingInput,
   SyncVideoInput,
   MediaListResult,
-} from './media.service'
+} from './media.service.js'
 
 export type {
   GenreFilters,
@@ -22,7 +22,7 @@ export type {
   UpdateGenreInput,
   GenreListResult,
   GenreWithMedia,
-} from './genres.service'
+} from './genres.service.js'
 
 export type {
   UpsertPersonInput,
@@ -30,4 +30,4 @@ export type {
   CreditInput,
   PeopleListResult,
   PersonWithFilmography,
-} from './people.service'
+} from './people.service.js'

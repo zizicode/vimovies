@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { CuratedListsService } from '../services/curated-lists.service'
+import { CuratedListsService } from '../services/curated-lists.service.js'
 import { ok, paginated, notFound, serverError } from '@vimovies/utils'
 
 export const CuratedListsController = {

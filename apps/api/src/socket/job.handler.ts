@@ -1,5 +1,5 @@
 import { Server, Socket } from 'socket.io'
-import { SyncMoviesJob } from '../job/sync-movies.job'
+import { SyncMoviesJob } from '../job/sync-movies.job.js'
 
 /**
  * Manejador del canal 'job' - Solo accesible por admins
@@ -11,7 +11,7 @@ export function setupJobChannel(io: Server) {
   // Aplicar middleware de autenticación
   jobNamespace.use(async (socket, next) => {
     // Importar el middleware de autenticación
-    const { adminAuthMiddleware } = await import('./auth.middleware')
+    const { adminAuthMiddleware } = await import('./auth.middleware.js')
     await adminAuthMiddleware(socket, next)
   })
 

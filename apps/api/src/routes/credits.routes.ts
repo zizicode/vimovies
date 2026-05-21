@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
-import { CreditsController } from '../controllers/tmdb/credits.controller'
-// import { PersonController } from '../controllers/tmdb/person.controller'
+import { CreditsController } from '../controllers/tmdb/credits.controller.js'
+// import { PersonController } from '../controllers/tmdb/person.controller.js'
 
 export const creditsRoutes = new Hono()
 

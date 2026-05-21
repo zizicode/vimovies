@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { MediaWatchProvidersService } from '../services/media-watch-providers.service'
+import { MediaWatchProvidersService } from '../services/media-watch-providers.service.js'
 import { ok, notFound, serverError } from '@vimovies/utils'
 
 export const MediaWatchProvidersController = {

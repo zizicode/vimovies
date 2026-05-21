@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { AuthService } from '../services/auth.service'
+import { AuthService } from '../services/auth.service.js'
 import {
   ok,
   fail,
