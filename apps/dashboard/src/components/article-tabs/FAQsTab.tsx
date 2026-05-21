@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { TiEdit, TiPlus, TiTrash, TiArrowSortedUp, TiArrowSortedDown, TiInfo } from 'react-icons/ti';
+import { TiEdit, TiPlus, TiTrash, TiArrowSortedUp, TiArrowSortedDown } from 'react-icons/ti';
 import type { ArticleItem } from '../../services/api.service';
 import './FAQsTab.scss';
 
@@ -38,12 +38,12 @@ export default function FAQsTab({ article, onSave }: FAQsTabProps) {
     // TODO: Add FAQ logic
   };
 
-  const handleRemoveFAQ = (faqId: string) => {
+  const handleRemoveFAQ = (_faqId: string) => {
     if (!editedArticle) return;
     // TODO: Remove FAQ logic
   };
 
-  const handleMoveFAQ = (index: number, direction: 'up' | 'down') => {
+  const handleMoveFAQ = (_index: number, _direction: 'up' | 'down') => {
     if (!editedArticle) return;
     // TODO: Move FAQ logic
   };

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { TiArrowBack } from 'react-icons/ti';
 import type { PlatformItem } from '../services/api.service';
+import { usePlatformsStore } from '../store/platforms.store';
 
 interface PlatformEditorProps {
   platform?: PlatformItem | null;
@@ -32,6 +33,7 @@ export default function PlatformEditor({ platform, onBack, onSave }: PlatformEdi
   });
 
   const [isSaving, setIsSaving] = useState(false);
+  const { updatePlatform, createPlatform } = usePlatformsStore();
 
   useEffect(() => {
     if (platform) {
@@ -82,7 +84,7 @@ export default function PlatformEditor({ platform, onBack, onSave }: PlatformEdi
     }
   }, [platform]);
 
-  const handleFieldChange = (field: string, value: string | number | boolean) => {
+  const handleFieldChange = (field: string, value: string | number | boolean | null) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -91,14 +93,12 @@ export default function PlatformEditor({ platform, onBack, onSave }: PlatformEdi
     try {
       if (platform?.id) {
         // Update existing platform
-        const { updatePlatform } = await import('../store/platforms.store');
         await updatePlatform(platform.id, formData);
       } else {
         // Create new platform
-        const { createPlatform } = await import('../store/platforms.store');
         await createPlatform(formData);
       }
-      
+
       if (onSave) {
         onSave({ ...platform, ...formData } as PlatformItem);
       }
