@@ -1,17 +1,17 @@
 // packages/utils/src/index.ts
 
 // Env
-export { env } from './env'
+export { env } from './env.js'
 
 // Auth
-export { verifyHardcodedPassword, generateToken, verifyToken, createAuthMiddleware } from './auth.utils'
-export type { JWTPayload } from './auth.utils'
+export { verifyHardcodedPassword, generateToken, verifyToken, createAuthMiddleware } from './auth.utils.js'
+export type { JWTPayload } from './auth.utils.js'
 
 // Response utils
-export * from './reponse.utils';
+export * from './reponse.utils.js';
 
 // Slug
-export { generateSlug, generateMediaSlug, generatePersonSlug } from './slug.utils'
+export { generateSlug, generateMediaSlug, generatePersonSlug } from './slug.utils.js'
 
 // TMDB
 export {
@@ -27,11 +27,11 @@ export {
   TMDB_PROVIDER_SLUG_MAP,
   TMDB_IMAGE_BASE,
   TMDB_IMAGE_SIZES,
-} from './tmdb.utils'
-export type { TmdbMovieRaw, TmdbCreditsRaw, TmdbWatchProvidersRaw, TmdbVideosRaw, TmdbPersonRaw } from './tmdb.utils'
+} from './tmdb.utils.js'
+export type { TmdbMovieRaw, TmdbCreditsRaw, TmdbWatchProvidersRaw, TmdbVideosRaw, TmdbPersonRaw } from './tmdb.utils.js'
 
 // Locale
-export { getLocalized, detectLocaleFromHeader } from './locale.utils'
+export { getLocalized, detectLocaleFromHeader } from './locale.utils.js'
 
 // SEO
 export {
@@ -40,11 +40,11 @@ export {
   buildPersonTitle,
   buildPlatformTitle,
   truncateForMeta,
-} from './seo.utils'
+} from './seo.utils.js'
 
 // Dates
-export { formatRuntime, getYear, formatDate, isoRuntime } from './date.utils'
+export { formatRuntime, getYear, formatDate, isoRuntime } from './date.utils.js'
 
 // Axios request utils
-export * from './request.utils';
-export * from './tmdb.utils';
+export * from './request.utils.js';
+export * from './tmdb.utils.js';

@@ -1,3 +1,3 @@
-export * from './tmdb/movie.repo'
-export * from './tmdb/credits.repo'
-export * from './tmdb/person.repo'
+export * from './tmdb/movie.repo.js'
+export * from './tmdb/credits.repo.js'
+export * from './tmdb/person.repo.js'

@@ -7,11 +7,13 @@
     "types": [
       "node"
     ],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": false,
     "outDir": "dist",
     "rootDir": "src",
     "noEmit": false,
     "declaration": true,
-    "emitDeclarationOnly": true,
     "paths": {
       "@/*": [
         "./src/*"

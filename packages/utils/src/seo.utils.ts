@@ -1,7 +1,7 @@
 // packages/utils/src/seo.utils.ts
 
 import { SupportedLocale } from '@vimovies/types'
-import { getLocalized } from './locale.utils'
+import { getLocalized } from './locale.utils.js'
 
 const SITE_NAME = 'Vimovies'
 
