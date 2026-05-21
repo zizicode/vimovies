@@ -28,7 +28,7 @@ for (const path of possiblePaths) {
 }
 
 if (!loaded) {
-  console.warn('[Env] No .env file found, using defaults')
+  console.warn('[Env] No .env file found, using process.env')
 }
 
 const envSchema = z.object({
@@ -50,8 +50,12 @@ const envSchema = z.object({
 const parsed = envSchema.safeParse(process.env)
 
 if (!parsed.success) {
-  console.error('❌ Variables de entorno inválidas:')
+  console.error('❌ Variables de entorno inválidas o faltantes:')
   console.error(parsed.error.flatten().fieldErrors)
+  console.error('Check required vars:', {
+    SUPABASE_SERVICE_ROLE_KEY: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+    TMDB_API_KEY: !!process.env.TMDB_API_KEY,
+  })
   process.exit(1)
 }
 
