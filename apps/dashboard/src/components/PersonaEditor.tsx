@@ -37,7 +37,6 @@ export default function PersonaEditor({ person, onBack, onSave }: PersonaEditorP
   const [isSaving, setIsSaving] = useState(false);
 
   const { updatePerson } = usePeopleStore();
-  const { token } = useAuthStore();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

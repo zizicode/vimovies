@@ -52,7 +52,7 @@ export default function PlatformEditor({ platform, onBack, onSave }: PlatformEdi
         affiliate_url_es: platform.affiliate_url_es ?? '',
         affiliate_url_en: platform.affiliate_url_en ?? '',
         affiliate_id: platform.affiliate_id ?? '',
-        tmdb_provider_id: platform.tmdb_provider_id,
+        tmdb_provider_id: platform.tmdb_provider_id ?? null,
         is_active: platform.is_active,
         display_order: platform.display_order,
       });

@@ -17,6 +17,11 @@ export default defineConfig({
     alias: {
       // Configura el alias '@' para apuntar a la carpeta 'src'
       '@': path.resolve(__dirname, './src'),
+      // Workspace packages
+      '@vimovies/utils': path.resolve(__dirname, '../../packages/utils/src/index.ts'),
+      '@vimovies/types': path.resolve(__dirname, '../../packages/types/src/index.ts'),
+      '@vimovies/repositories': path.resolve(__dirname, '../../packages/repositories/src/index.ts'),
+      '@vimovies/db': path.resolve(__dirname, '../../packages/db/src/index.ts'),
     },
   },
   server: {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { TiArrowBack, TiPlus } from 'react-icons/ti';
+import { TiArrowBack } from 'react-icons/ti';
 import type { GenreItem } from '../services/api.service';
+import { useGenresStore } from '../store/genres.store';
 
 interface GenreEditorProps {
   genre?: GenreItem | null;
@@ -25,6 +26,7 @@ export default function GenreEditor({ genre, onBack, onSave }: GenreEditorProps)
   });
 
   const [isSaving, setIsSaving] = useState(false);
+  const { updateGenre } = useGenresStore();
 
   useEffect(() => {
     if (genre) {
@@ -66,10 +68,9 @@ export default function GenreEditor({ genre, onBack, onSave }: GenreEditorProps)
           cover_image_url: formData.cover_image_url,
           sitemap_priority: formData.sitemap_priority,
         };
-        
-        const { updateGenre } = await import('../store/genres.store');
+
         await updateGenre(genre.id, updateData);
-        
+
         if (onSave) {
           onSave({ ...genre, ...formData } as GenreItem);
         }

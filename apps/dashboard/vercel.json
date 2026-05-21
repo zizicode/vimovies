@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm --filter dashboard build",
+  "buildCommand": "cd ../.. && pnpm --filter @vimovies/types build && pnpm --filter @vimovies/utils build && pnpm --filter @vimovies/db build && pnpm --filter @vimovies/repositories build && pnpm --filter dashboard build",
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [

@@ -15,6 +15,15 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Path mappings for workspace packages */
+    "baseUrl": ".",
+    "paths": {
+      "@vimovies/utils": ["../../packages/utils/src/index.ts"],
+      "@vimovies/types": ["../../packages/types/src/index.ts"],
+      "@vimovies/repositories": ["../../packages/repositories/src/index.ts"],
+      "@vimovies/db": ["../../packages/db/src/index.ts"]
+    },
+
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
