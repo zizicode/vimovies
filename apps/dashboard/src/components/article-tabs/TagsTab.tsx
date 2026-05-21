@@ -40,7 +40,7 @@ export default function TagsTab({ article, onSave }: TagsTabProps) {
     setNewTag('');
   };
 
-  const handleRemoveTag = (tagId: number) => {
+  const handleRemoveTag = (_tagId: number) => {
     if (!editedArticle) return;
     // TODO: Remove tag logic
   };

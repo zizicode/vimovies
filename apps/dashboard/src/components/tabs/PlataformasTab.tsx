@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { TiPlus, TiTrash, TiPencil } from 'react-icons/ti';
-import type { MediaItem, WatchProvider, Platform } from './types';
+import type { MediaItem, WatchProvider } from './types';
+import type { PlatformItem } from '../../services/api.service';
 import { mediaService, platformsService } from '../../services/api.service';
 import { useAuthStore } from '../../store';
 
@@ -19,11 +20,11 @@ const REGIONS = [
 export default function PlataformasTab({ movie }: PlataformasTabProps) {
   const { token } = useAuthStore();
   const [providers, setProviders] = useState<WatchProvider[]>([]);
-  const [platforms, setPlatforms] = useState<Platform[]>([]);
+  const [platforms, setPlatforms] = useState<PlatformItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingProvider, setEditingProvider] = useState<WatchProvider | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<PlatformItem | null>(null);
   const [selectedRegion, setSelectedRegion] = useState('ES');
   const [isStreaming, setIsStreaming] = useState(true);
   const [isRent, setIsRent] = useState(false);
@@ -122,7 +123,7 @@ export default function PlataformasTab({ movie }: PlataformasTabProps) {
           rent_price_usd: rentPrice ? parseFloat(rentPrice) : null,
           buy_price_usd: buyPrice ? parseFloat(buyPrice) : null,
           watch_url: watchUrl || null,
-          affiliate_url: affiliate_url || null,
+          affiliate_url: affiliateUrl || null,
         },
         token || ''
       );

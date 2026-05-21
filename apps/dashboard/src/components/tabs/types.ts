@@ -1,3 +1,5 @@
+import type { PlatformItem } from '../../services/api.service';
+
 export interface MediaItem {
   id: string;
   tmdb_id: number;
@@ -63,17 +65,6 @@ export interface Credit {
   person: Person;
 }
 
-export interface Platform {
-  id: number;
-  slug: string;
-  name_es: string;
-  name_en: string;
-  logo_url: string | null;
-  platform_type: string;
-  affiliate_url_es: string | null;
-  affiliate_url_en: string | null;
-}
-
 export interface WatchProvider {
   id: string;
   media_id: string;
@@ -86,7 +77,7 @@ export interface WatchProvider {
   buy_price_usd: number | null;
   watch_url: string | null;
   affiliate_url: string | null;
-  platform: Platform;
+  platform: PlatformItem;
 }
 
 export type VideoType = 'trailer' | 'teaser' | 'clip' | 'featurette' | 'behind_the_scenes' | 'bloopers';

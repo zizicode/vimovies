@@ -33,7 +33,7 @@ export default function FAQsTab({ article, onSave }: FAQsTabProps) {
     }
   };
 
-  const handleAddFAQ = () => {
+  const _handleAddFAQ = () => {
     if (!editedArticle) return;
     // TODO: Add FAQ logic
   };

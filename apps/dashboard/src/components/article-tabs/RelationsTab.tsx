@@ -14,8 +14,6 @@ export default function RelationsTab({ article, onSave }: RelationsTabProps) {
   const [editedArticle, setEditedArticle] = useState<ArticleItem | null>(null);
   const [categories, setCategories] = useState<any[]>([]);
   const [authors, setAuthors] = useState<any[]>([]);
-  
-  const { fetchArticleById } = useArticlesStore();
 
   useEffect(() => {
     setEditedArticle(article);
