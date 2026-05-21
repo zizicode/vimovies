@@ -3,5 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "files": ["*.json"],
+  "exports": {
+    "./base.json": "./base.json",
+    "./node-library.json": "./node-library.json",
+    "./react-library.json": "./react-library.json",
+    "./vite-app.json": "./vite-app.json"
+  },
   "license": "MIT"
 }

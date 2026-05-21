@@ -15,6 +15,7 @@ COPY packages/types/package.json ./packages/types/
 COPY packages/utils/package.json ./packages/utils/
 COPY packages/repositories/package.json ./packages/repositories/
 COPY packages/validators/package.json ./packages/validators/
+COPY tooling/typescript/package.json ./tooling/typescript/
 COPY apps/api/package.json ./apps/api/
 
 # Install dependencies
