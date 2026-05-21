@@ -10,8 +10,7 @@
                             "outDir":  "dist",
                             "rootDir":  "src",
                             "noEmit":  false,
-                            "module":  "CommonJS",
-                            "moduleResolution":  "Node",
+                            "allowImportingTsExtensions":  false,
                             "paths":  {
                                           "@/*":  [
                                                       "./src/*"
