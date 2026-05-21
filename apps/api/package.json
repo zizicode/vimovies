@@ -19,7 +19,6 @@
     "@vimovies/tsconfig": "workspace:*",
     "@vimovies/types": "workspace:*",
     "@vimovies/utils": "workspace:*",
-    "@vimovies/validators": "workspace:*",
     "axios": "^1.16.1",
     "dotenv": "^17.4.2",
     "hono": "^4.12.18",
