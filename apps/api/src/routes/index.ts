@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { getSupabase as supabase, env } from '@vimovies/db'
+import { supabase, env } from '@vimovies/db'
 import { buildTmdbEndpoint, TmdbEndpoint } from '@vimovies/types'
 import { httpRequest } from '@vimovies/utils'
 import { movieRoutes } from './movie.routes.js'

@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { getSupabase as supabase } from '@vimovies/db';
+import { supabase } from '@vimovies/db';
 import { ok, serverError } from '@vimovies/utils';
 
 const router = new Hono();

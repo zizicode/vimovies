@@ -1,4 +1,4 @@
-import { getSupabase as supabase } from '@vimovies/db'
+import { supabase } from '@vimovies/db'
 import type { Person, PersonRole, SitemapPriority } from '@vimovies/types'
 
 // ─────────────────────────────────────────────────────────────────────────────

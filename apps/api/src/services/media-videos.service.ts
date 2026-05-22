@@ -1,4 +1,4 @@
-import { getSupabase as supabase } from '@vimovies/db'
+import { supabase } from '@vimovies/db'
 import { VideoType, VideoSite, SupportedLocale } from '@vimovies/types'
 
 /**

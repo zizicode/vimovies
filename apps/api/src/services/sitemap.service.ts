@@ -1,4 +1,4 @@
-import { getSupabase as supabase } from '@vimovies/db'
+import { supabase } from '@vimovies/db'
 
 const SITE_URL = process.env.SITE_URL ?? 'https://vimovies.com'
 const MOVIES_PER_SITEMAP = 500
