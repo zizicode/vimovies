@@ -180,7 +180,7 @@ export const useMediaStore = create<MediaState>()(
           if (filters.sortBy) (params as any).sort_by = filters.sortBy;
           if (filters.sortOrder) (params as any).sort_order = filters.sortOrder;
 
-          const response = await mediaService.list(params, token);
+          const response = await mediaService.list(params, token ?? undefined);
 
           if (response.success && response.data) {
             const total = (response as any).pagination?.total || response.data?.length || 0;

@@ -93,7 +93,7 @@ export const useGenresStore = create<GenresState>()((set, get) => ({
     const { token } = useAuthStore.getState();
     
     try {
-      await genresService.remove(id, token);
+      await genresService.remove(id, token ?? undefined);
       get().fetchGenres();
     } catch (err) {
       set({

@@ -125,7 +125,7 @@ export const useArticlesStore = create<ArticlesState>()(
         set({ loading: true, error: null });
 
         try {
-          const response = await articlesService.getById(id, token);
+          const response = await articlesService.getById(id, token ?? undefined);
 
           if (response.success && response.data) {
             set({
