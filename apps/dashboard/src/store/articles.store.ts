@@ -156,6 +156,7 @@ export const useArticlesStore = create<ArticlesState>()(
         set({ loading: true, error: null });
 
         try {
+          if (!token) throw new Error('Authentication required');
           const response = await articlesService.create(data, token);
 
           if (response.success && response.data) {
@@ -185,6 +186,7 @@ export const useArticlesStore = create<ArticlesState>()(
         set({ loading: true, error: null });
 
         try {
+          if (!token) throw new Error('Authentication required');
           const response = await articlesService.update(id, data, token);
 
           if (response.success && response.data) {
@@ -214,6 +216,7 @@ export const useArticlesStore = create<ArticlesState>()(
         set({ loading: true, error: null });
 
         try {
+          if (!token) throw new Error('Authentication required');
           const response = await articlesService.publish(id, token);
 
           if (response.success && response.data) {
@@ -243,6 +246,7 @@ export const useArticlesStore = create<ArticlesState>()(
         set({ loading: true, error: null });
 
         try {
+          if (!token) throw new Error('Authentication required');
           const response = await articlesService.archive(id, token);
 
           if (response.success && response.data) {
@@ -272,6 +276,7 @@ export const useArticlesStore = create<ArticlesState>()(
         set({ loading: true, error: null });
 
         try {
+          if (!token) throw new Error('Authentication required');
           const response = await articlesService.remove(id, token);
 
           if (response.success) {

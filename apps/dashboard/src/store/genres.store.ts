@@ -40,7 +40,7 @@ export const useGenresStore = create<GenresState>()((set, get) => ({
     set({ loading: true, error: null });
 
     try {
-      const response = await genresService.list(token);
+      const response = await genresService.list(token ?? undefined);
 
       if (response.data) {
         set({
@@ -67,7 +67,7 @@ export const useGenresStore = create<GenresState>()((set, get) => ({
     const { token } = useAuthStore.getState();
     
     try {
-      await genresService.create(genre, token);
+      await genresService.create(genre, token ?? undefined);
       get().fetchGenres();
     } catch (err) {
       set({
@@ -80,7 +80,7 @@ export const useGenresStore = create<GenresState>()((set, get) => ({
     const { token } = useAuthStore.getState();
     
     try {
-      await genresService.update(id, genre, token);
+      await genresService.update(id, genre, token ?? undefined);
       get().fetchGenres();
     } catch (err) {
       set({

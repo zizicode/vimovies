@@ -211,7 +211,7 @@ export const useMediaStore = create<MediaState>()(
         set({ loading: true, error: null });
 
         try {
-          const response = await mediaService.getById(id, token);
+          const response = await mediaService.getById(id, token ?? undefined);
 
           if (response.success && response.data) {
             set({
@@ -242,6 +242,7 @@ export const useMediaStore = create<MediaState>()(
         set({ loading: true, error: null });
 
         try {
+          if (!token) throw new Error('Authentication required');
           const response = await mediaService.updateEditorial(id, data, token);
 
           if (response.success && response.data) {
@@ -272,6 +273,7 @@ export const useMediaStore = create<MediaState>()(
         set({ loading: true, error: null });
 
         try {
+          if (!token) throw new Error('Authentication required');
           const response = await mediaService.patch(id, data, token);
 
           if (response.success && response.data) {
@@ -302,6 +304,7 @@ export const useMediaStore = create<MediaState>()(
         set({ loading: true, error: null });
 
         try {
+          if (!token) throw new Error('Authentication required');
           const response = await mediaService.remove(id, token);
 
           if (response.success) {

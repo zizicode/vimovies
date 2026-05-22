@@ -69,12 +69,12 @@ export const usePeopleStore = create<PeopleState>((set, get) => ({
         currentPage,
         perPage,
         filters.search,
-        token
+        token ?? undefined
       );
       
       if (response.data) {
-        const people = response.data || [];
-        const total = response.pagination?.total || 0;
+        const people = (response.data as any).data || [];
+        const total = (response.data as any).total || 0;
         set({
           people,
           total,
@@ -107,7 +107,7 @@ export const usePeopleStore = create<PeopleState>((set, get) => ({
     const { token } = useAuthStore.getState();
     
     try {
-      const response = await peopleService.getById(id, token);
+      const response = await peopleService.getById(id, token ?? undefined);
       return response.data || null;
     } catch (error) {
       console.error('Error fetching person:', error);
