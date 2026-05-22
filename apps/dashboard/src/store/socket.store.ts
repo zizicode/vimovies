@@ -28,7 +28,7 @@ export const useSocketStore = create<SocketState>()((set, get) => ({
       return;
     }
 
-    const socket = io('http://localhost:3002/job', {
+    const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:3002/job', {
       auth: {
         token,
       },
