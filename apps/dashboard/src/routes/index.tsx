@@ -1,7 +1,7 @@
 // src/routes/index.tsx
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 
-import RootLayout from '../root-layout'
+import RootLayout from '../root-layout/index'
 
 import { Login } from '../pages/login'
 import { Dashboard } from '../pages/dashboard'
