@@ -12,7 +12,7 @@ export const app = new Hono()
   .use('*', logger())
   .use('*', secureHeaders())
   .use('*', cors({
-    origin: [env.WEB_URL, env.DASHBOARD_URL],
+    origin: [env.WEB_URL, env.DASHBOARD_URL, 'https://www.vimovies.com', 'https://vimovies.com'],
     allowMethods: ['GET', 'POST', 'PATCH', 'DELETE'],
     allowHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
