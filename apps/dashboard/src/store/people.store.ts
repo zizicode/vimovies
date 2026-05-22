@@ -120,6 +120,7 @@ export const usePeopleStore = create<PeopleState>((set, get) => ({
     
     try {
       console.log('Updating person with data:', { id, data }); // Debug log
+      if (!token) throw new Error('Authentication required');
       const response = await peopleService.update(id, data, token);
       console.log('Update response:', response); // Debug log
       
@@ -147,6 +148,7 @@ export const usePeopleStore = create<PeopleState>((set, get) => ({
     const { token } = useAuthStore.getState();
     
     try {
+      if (!token) throw new Error('Authentication required');
       await peopleService.remove(id, token);
       await get().fetchPeople();
     } catch (error) {

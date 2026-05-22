@@ -38,7 +38,7 @@ export const usePlatformsStore = create<PlatformsState>()((set, get) => ({
     set({ loading: true, error: null });
 
     try {
-      const response = await platformsService.adminList(token);
+      const response = await platformsService.adminList(token ?? undefined);
       console.log('Platforms response:', response); // Debug log
 
       if (response.data) {
@@ -70,7 +70,7 @@ export const usePlatformsStore = create<PlatformsState>()((set, get) => ({
     const { token } = useAuthStore.getState();
     
     try {
-      await platformsService.create(platform, token);
+      await platformsService.create(platform, token ?? undefined);
       get().fetchPlatforms();
     } catch (err) {
       set({
@@ -83,7 +83,7 @@ export const usePlatformsStore = create<PlatformsState>()((set, get) => ({
     const { token } = useAuthStore.getState();
     
     try {
-      await platformsService.update(id, platform, token);
+      await platformsService.update(id, platform, token ?? undefined);
       get().fetchPlatforms();
     } catch (err) {
       set({
@@ -96,7 +96,7 @@ export const usePlatformsStore = create<PlatformsState>()((set, get) => ({
     const { token } = useAuthStore.getState();
     
     try {
-      await platformsService.remove(id, token);
+      await platformsService.remove(id, token ?? undefined);
       get().fetchPlatforms();
     } catch (err) {
       set({
