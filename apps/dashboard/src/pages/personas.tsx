@@ -256,7 +256,7 @@ export default function Personas() {
                         </div>
                       </div>
                     </td>
-                    <td>{formatDate(person.birthdate)}</td>
+                    <td>{formatDate(person.birthdate ?? null)}</td>
                     <td>{getGenderText(person.gender)}</td>
                     <td>{person.tmdb_popularity?.toFixed(1) || 'N/A'}</td>
                     <td>

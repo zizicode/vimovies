@@ -95,7 +95,7 @@ export const useArticlesStore = create<ArticlesState>()(
           if (filters.intent) params.intent = filters.intent as ArticleIntent;
           if (filters.authorId) (params as any).author_id = filters.authorId;
 
-          const response = await articlesService.list(params, token);
+          const response = await articlesService.list(params, token ?? undefined);
 
           if (response.success && response.data) {
             const total = (response as any).pagination?.total || response.data?.length || 0;
