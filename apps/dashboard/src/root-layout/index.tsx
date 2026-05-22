@@ -3,10 +3,12 @@ import Sidebar from '../components/ui/sidebar'
 
 export default function RootLayout() {
   return (
-    <div className="app-layout">
+    <div className="app">
       <Sidebar />
-      <main className="main-content">
-        <Outlet />
+      <main className="main">
+        <div className="main-content">
+          <Outlet />
+        </div>
       </main>
     </div>
   )
